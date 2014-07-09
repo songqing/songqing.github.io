@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 09 Jul 2014 02:04:13 +0800</pubDate>
-    <lastBuildDate>Wed, 09 Jul 2014 02:04:13 +0800</lastBuildDate>
+    <title>Home</title>
+    <description>liuyiyou.cn的个人小站</description>
+    <link>http//:liuyiyou.cn/</link>
+    <atom:link href="http//:liuyiyou.cn/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 09 Jul 2014 10:44:07 +0800</pubDate>
+    <lastBuildDate>Wed, 09 Jul 2014 10:44:07 +0800</lastBuildDate>
     <generator>Jekyll v2.1.0</generator>
     
       <item>
+        <title>从零开始使用jeklly在!</title>
+        <description>&lt;h3&gt;做了些什么？&lt;/h3&gt;
+&lt;p&gt;
+1：搭建了一个github静态网站
+2：绑定了顶级域名和二级域名，不过二级暂时不会用，先学会走再跑
+3：通过jekyll搭建一个静态博客
+&quot;\n\n\n&quot;
+&lt;p&gt;
+&lt;h3&gt;一些需要修改的地方&lt;/h3&gt;
+1：导航的时候增加一个page，不能自定义排序，且该page中不能使用中文，而其他的地方却可以
+
+&lt;/p&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 09 Jul 2014 18:05:01 +0800</pubDate>
+        <link>http//:liuyiyou.cn/posts/2014/07/09/start-from-zero/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/posts/2014/07/09/start-from-zero/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
         <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+        <description>&lt;p&gt;使用中文
+You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
 To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
@@ -19,14 +43,12 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Wed, 09 Jul 2014 09:54:35 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2014/07/09/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2014/07/09/welcome-to-jekyll/</guid>
+        <pubDate>Wed, 09 Jul 2014 11:05:01 +0800</pubDate>
+        <link>http//:liuyiyou.cn/posts/2014/07/09/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/posts/2014/07/09/welcome-to-jekyll/</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>posts</category>
         
       </item>
     
