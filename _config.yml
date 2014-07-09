@@ -9,4 +9,5 @@ github_username:  liuyiyou
 # Build settings
 markdown: kramdown
 permalink: pretty
+Encoding: UTF-8
 excerpt_separator: "\n\n\n"
