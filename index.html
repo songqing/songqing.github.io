@@ -2,19 +2,37 @@
 layout: default
 ---
 
-<div class="home">
+<div class="row-fluid">
+    <div class="span12">
+        {% for post in site.posts %}
+            <div class="row-fluid">
+                <div class="span12 ">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="post">
+                                <div class="post-hd">
+                                    <div class="post-info">
+                                        <h1 class="post-title"><a href="{{site.baseurl}}{{post.url}}"> {{ post.title }}  </a> <br></h1>
 
-  <ul class="posts">
-     {% for post in site.posts %}
-        <li>
-		<a href="{{site.baseurl}}{{post.url}}"> {{ post.title }}  </a> <br>
-        {{ post.date | date: "%F" }} <br>
-        {{ post.category }} <br>
-        {{ post.excerpt }} 
-		<hr>
-		</li>
-    {% endfor %}
-  </ul>
+                                        <p class="post-extra">
+                                            作者：<a rel="bookmark">liuyiyou</a>| 时间：
+                                             {{ post.date | date: "%F" }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="h-dotted-line"></div>
+                                <div class="post-bd">{{ post.category }}</div>
+                                <div class="h-dotted-line"></div>
+                                <a class="link" href="{{site.baseurl}}{{post.url}}"> More  </a>
+                                <hr>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
+        {% endfor %}
+    </div>
 </div>
