@@ -5,9 +5,26 @@
     <description>liuyiyou.cn的个人小站</description>
     <link>http//:liuyiyou.cn/</link>
     <atom:link href="http//:liuyiyou.cn/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 09 Jul 2014 16:25:38 +0800</pubDate>
-    <lastBuildDate>Wed, 09 Jul 2014 16:25:38 +0800</lastBuildDate>
+    <pubDate>Thu, 10 Jul 2014 00:35:04 +0800</pubDate>
+    <lastBuildDate>Thu, 10 Jul 2014 00:35:04 +0800</lastBuildDate>
     <generator>Jekyll v2.1.0</generator>
+    
+      <item>
+        <title>今天做了什么!</title>
+        <description>&lt;p&gt;首先，日期是不准的。&lt;/p&gt;
+&lt;p&gt;2:没有分类目录&lt;/p&gt;
+&lt;p&gt;3:不支持中文&lt;/p&gt;
+&lt;p&gt;4:首页没有进行分页&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 10 Jul 2014 18:05:01 +0800</pubDate>
+        <link>http//:liuyiyou.cn/posts/2014/07/10/what-to-do/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/posts/2014/07/10/what-to-do/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>从零开始使用jeklly在!</title>
