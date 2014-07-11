@@ -1,25 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home</title>
+    <title>liuyiyou</title>
     <description>liuyiyou.cn的个人小站</description>
     <link>http//:liuyiyou.cn/</link>
     <atom:link href="http//:liuyiyou.cn/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 10 Jul 2014 00:35:04 +0800</pubDate>
-    <lastBuildDate>Thu, 10 Jul 2014 00:35:04 +0800</lastBuildDate>
+    <pubDate>Fri, 11 Jul 2014 13:55:46 +0800</pubDate>
+    <lastBuildDate>Fri, 11 Jul 2014 13:55:46 +0800</lastBuildDate>
     <generator>Jekyll v2.1.0</generator>
+    
+      <item>
+        <title>在首页使用时光轴时候出现的问题</title>
+        <description>&lt;p&gt;如果只是使用时光轴样式，倒是没有什么问题，但是想要在当前页面加载下一页的时候出现了各种问题。
+即：怎样在jekyll中首页加载&lt;/p&gt;
+
+&lt;p&gt;1：如果使用ajax加载的话，首先得将所有文章转换为json格式。如果只是标题和时间还好，但是概要或者内容的话，里面含有html格式。这样虽然能正常返回，但是却无法显示。&lt;/p&gt;
+
+&lt;p&gt;2：使用常规加载的话，找不到好的办法。因为pagator提供的数据只有那么多。只能得到当前页面的内容，下一页的内容无法得到。&lt;/p&gt;
+
+&lt;p&gt;3：通过ajax模拟。
+比如平常的点击下一页，改成ajax。这样也可以显示。但是出现的问题就是，虽然之加载了该页的数据，但是所有的内容都加载进来了，包括导航栏等。而且下下一页不好取到。&lt;/p&gt;
+
+&lt;p&gt;最后使用的是第三种方法。
+但是最后一页如果只有一篇文章的话，总是出现两篇同样的。不知道原因在哪里。最好发现是
+var $content = $(data).find(&amp;#39;ul&amp;#39;);
+$(&amp;quot;.cbp_tmtimeline&amp;quot;).append($content.html());&lt;/p&gt;
+
+&lt;p&gt;我一直用的是append($content)。在是一个object。但是为何解析出两个，一直不解。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Jul 2014 16:05:05 +0800</pubDate>
+        <link>http//:liuyiyou.cn/jekyll/2014/07/11/what-to-do4/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/jekyll/2014/07/11/what-to-do4/</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>今天做了什么4!</title>
+        <description>&lt;p&gt;首先，日期是不准的。&lt;/p&gt;
+
+&lt;p&gt;2:没有分类目录&lt;/p&gt;
+
+&lt;p&gt;3:不支持中文&lt;/p&gt;
+
+&lt;p&gt;4:首页没有进行分页&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Jul 2014 16:05:04 +0800</pubDate>
+        <link>http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do3/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do3/</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>今天做了什么3!</title>
+        <description>&lt;p&gt;首先，日期是不准的。&lt;/p&gt;
+
+&lt;p&gt;2:没有分类目录&lt;/p&gt;
+
+&lt;p&gt;3:不支持中文&lt;/p&gt;
+
+&lt;p&gt;4:首页没有进行分页&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Jul 2014 16:05:03 +0800</pubDate>
+        <link>http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do2/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do2/</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>今天做了什么2!</title>
+        <description>&lt;p&gt;首先，日期是不准的。&lt;/p&gt;
+
+&lt;p&gt;2:没有分类目录&lt;/p&gt;
+
+&lt;p&gt;3:不支持中文&lt;/p&gt;
+
+&lt;p&gt;4:首页没有进行分页&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Jul 2014 16:05:02 +0800</pubDate>
+        <link>http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do1/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do1/</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
     
       <item>
         <title>今天做了什么!</title>
         <description>&lt;p&gt;首先，日期是不准的。&lt;/p&gt;
-&lt;p&gt;2:没有分类目录&lt;/p&gt;
-&lt;p&gt;3:不支持中文&lt;/p&gt;
-&lt;p&gt;4:首页没有进行分页&lt;/p&gt;
 
+&lt;p&gt;2:没有分类目录&lt;/p&gt;
+
+&lt;p&gt;3:不支持中文&lt;/p&gt;
+
+&lt;p&gt;4:首页没有进行分页&lt;/p&gt;
 </description>
-        <pubDate>Thu, 10 Jul 2014 18:05:01 +0800</pubDate>
-        <link>http//:liuyiyou.cn/posts/2014/07/10/what-to-do/</link>
-        <guid isPermaLink="true">http//:liuyiyou.cn/posts/2014/07/10/what-to-do/</guid>
+        <pubDate>Thu, 10 Jul 2014 16:05:01 +0800</pubDate>
+        <link>http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/jekyll/2014/07/10/what-to-do/</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>为 jekyll 博客添加 category 分类</title>
+        <description>&lt;p&gt;一、为文章添加分类&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+def foo
+  puts &amp;#39;foo&amp;#39;
+end
+&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Jul 2014 11:03:29 +0800</pubDate>
+        <link>http//:liuyiyou.cn/jekyll/2014/07/10/use-category-plugin-for-jekyll-blog/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/jekyll/2014/07/10/use-category-plugin-for-jekyll-blog/</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>博客编辑工具</title>
+        <description>&lt;h1&gt;这是H1的标题&lt;/h1&gt;
+
+&lt;h2&gt;这是H2的标题&lt;/h2&gt;
+
+&lt;h3&gt;这是H3的标题&lt;/h3&gt;
+
+&lt;h1&gt;如何使用 Markdonw&lt;/h1&gt;
+
+&lt;h1&gt;最终的目标&lt;/h1&gt;
+
+&lt;p&gt;什么东西都是慢慢来的，所以这个博客最终成为什么样子也不是一天两天的事情，所以就慢慢磨吧！&lt;/p&gt;
+
+&lt;h1&gt; 1：使用markDownPad编辑博客 &lt;/h1&gt;
+
+&lt;p&gt;今天开始使用markDownPad作为博客的编辑工具。能实时预览，虽然还达不到最终效果，但是比起文本编辑器还是要好上不少。不出意外在windows上就一直用这个编辑器了。&lt;/p&gt;
+
+&lt;h1&gt;最终的目标&lt;/h1&gt;
+
+&lt;h2&gt; 1：熟悉markDown的语法 &lt;/h2&gt;
+
+&lt;p&gt;比如编辑的时候为什么使用两个&quot;##&quot;就能生成一个H2的标题&lt;/p&gt;
+
+&lt;h2&gt; 2：有一个漂亮的模板 &lt;/h2&gt;
+
+&lt;p&gt;现在的模板就是一个七拼八凑起来的，各种css滥用，而且很多地方都缺斤短两，所以最终的时候能有一个漂亮的模板&lt;/p&gt;
+
+&lt;h2&gt; 3：熟练的通过jeklly编写博客程序 &lt;/h2&gt;
+
+&lt;p&gt;这也是一个长期目标，最终能达到很好的效果&lt;/p&gt;
+
+&lt;h1&gt; 接下来要做的 &lt;/h1&gt;
+
+&lt;h2&gt; 1：模板的持续改进 &lt;/h2&gt;
+
+&lt;p&gt;这个是一个长时间的水磨功夫，并不是一两天就能完成的，从头到尾对任何东西都不熟悉，也就是边学习边进步吧！可以学习到git，jekyll，css，jquery等技术也算一件好事&lt;/p&gt;
+
+&lt;h2&gt; 1：首页如何进行分页&lt;/h2&gt;
+
+&lt;h1&gt;2：分类目录如何添加&lt;/h1&gt;
+
+&lt;p&gt;参考：为jeklly为博客添加分类&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Jul 2014 10:32:49 +0800</pubDate>
+        <link>http//:liuyiyou.cn/posts/2014/07/10/use-markdown/</link>
+        <guid isPermaLink="true">http//:liuyiyou.cn/posts/2014/07/10/use-markdown/</guid>
         
         
         <category>posts</category>
@@ -29,16 +188,15 @@
       <item>
         <title>从零开始使用jeklly在!</title>
         <description>&lt;h3&gt;做了些什么？&lt;/h3&gt;
-&lt;p&gt;
+
+&lt;p&gt;&lt;p&gt;
 1：搭建了一个github静态网站
 2：绑定了顶级域名和二级域名，不过二级暂时不会用，先学会走再跑
-3：通过jekyll搭建一个静态博客
-&quot;\n\n\n&quot;
-&lt;p&gt;
-&lt;h3&gt;一些需要修改的地方&lt;/h3&gt;
-1：导航的时候增加一个page，不能自定义排序，且该page中不能使用中文，而其他的地方却可以
+3：通过jekyll搭建一个静态博客&lt;/p&gt;
 
-&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;p&gt;
+&lt;h3&gt;一些需要修改的地方&lt;/h3&gt;
+1：导航的时候增加一个page，不能自定义排序，且该page中不能使用中文，而其他的地方却可以&lt;/p&gt;
 </description>
         <pubDate>Wed, 09 Jul 2014 18:05:01 +0800</pubDate>
         <link>http//:liuyiyou.cn/posts/2014/07/09/start-from-zero/</link>
@@ -52,13 +210,12 @@
       <item>
         <title>Welcome to Jekyll!</title>
         <description>&lt;p&gt;使用中文
-You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+You&amp;#39;ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
 To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
-
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&amp;#39;s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 09 Jul 2014 11:05:01 +0800</pubDate>
         <link>http//:liuyiyou.cn/posts/2014/07/09/welcome-to-jekyll/</link>

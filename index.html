@@ -1,36 +1,23 @@
 ---
-layout: default
+layout: index
 ---
 
-<div class="row-fluid">
-    <div class="span12">
-        {% for post in site.posts %}
-            <div class="row-fluid">
-                <div class="span12 ">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="post">
-                                <div class="post-hd">
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a href="{{site.baseurl}}{{post.url}}"> {{ post.title }}  </a> <br></h1>
 
-                                        <p class="post-extra">
-                                            Author:<a rel="bookmark">liuyiyou</a>| Date:
-                                             {{ post.date | date: "%F" }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="h-dotted-line"></div>
-                                <div class="post-bd">{{ post.content }}</div>
-                                <div class="h-dotted-line"></div>
-                                <a class="link" href="{{site.baseurl}}{{post.url}}"> More  </a>
-                                <hr>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
+
+       {% for post in paginator.posts %}
+          <li><time class="cbp_tmtime">
+          <span>{{ {post.date | date:"%F"}}</span> <span>{{ {post.date | date:"%F"}}</time>
+          <div class="cbp_tmicon cbp_tmicon-phone"></div>
+          <div class="cbp_tmlabel">
+            <h2><a href="{{site.baseurl}}{{post.url}}"> {{ post.title }}  </a> </h2>
+            <p>{{ post.excerpt }} </p>
+            <p> <a class="link" href="{{site.baseurl}}{{post.url}}"> More  </a></p>
+          </div>
+          </li>        
         {% endfor %}
-    </div>
-</div>
+
+
+    
+
+

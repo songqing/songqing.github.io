@@ -1,10 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
-  <head>
+  
+    <body class="cbp-spmenu-push">
+	<nav
+		class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left"
+		id="cbp-spmenu-s1">
+	<h3>Category</h3>
+	 
+    
+	
+	<a href="/categories/posts/" title="view all posts">posts 3</a>
+	
+	
+    
+    
+	
+	<a href="/categories/jekyll/" title="view all posts">jekyll 6</a>
+	
+	
+    
+	
+	
+	</nav>
+	
+		
+		
+      <div class="container">
+    <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title>liuyiyou</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="liuyiyou.cn的个人小站">
     <link rel="canonical" href="http//:liuyiyou.cn/">
@@ -12,147 +37,187 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/base.css">
-	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/blog.css">
+	<link rel="stylesheet" href="/css/default.css">
+	<link rel="stylesheet" href="/css/timeline.css">
+	<link rel="stylesheet" href="/css/menu.css">
     <!-- Custom js-->
 	<script   src="/js/jquery.js" ></script>
-	<script   src="/js/bootstrap.js" ></script>
+	
 </head>
 
+    <header class="clearfix">
+				<span>liuyiyou.cn <span class="bp-icon bp-icon-about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
+				<h1>Index Timeline</h1>
+				<nav>
+					<a href="/"  ><span>Index</span></a>
+					<a id="category" href="javascript:void(0)" ><span>Category</span></a>
+					<a href=""><span>Archive</span></a>
+					<a href="" ><span>About</span></a>
+				</nav>
+</header>
+      <div class="main">
+          <ul class="cbp_tmtimeline">
+                     
+          <li><time class="cbp_tmtime">
+          <span>2014-07-11</span> <span>2014-07-11</time>
+          <div class="cbp_tmicon cbp_tmicon-phone"></div>
+          <div class="cbp_tmlabel">
+            <h2><a href="/jekyll/2014/07/11/what-to-do4/"> 在首页使用时光轴时候出现的问题  </a> </h2>
+            <p><p>如果只是使用时光轴样式，倒是没有什么问题，但是想要在当前页面加载下一页的时候出现了各种问题。
+即：怎样在jekyll中首页加载</p>
 
-    <body>
+<p>1：如果使用ajax加载的话，首先得将所有文章转换为json格式。如果只是标题和时间还好，但是概要或者内容的话，里面含有html格式。这样虽然能正常返回，但是却无法显示。</p>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-          <ul class="nav navbar-nav">
-            <li><a href="/"><img src="/img/logo.jpg" ></a></li>
-            <li><a href="/work" >Work</a></li>
-            <li><a href="/about/">About</a></li>
-          </ul>
+<p>2：使用常规加载的话，找不到好的办法。因为pagator提供的数据只有那么多。只能得到当前页面的内容，下一页的内容无法得到。</p>
+ </p>
+            <p> <a class="link" href="/jekyll/2014/07/11/what-to-do4/"> More  </a></p>
+          </div>
+          </li>        
         
-      </div>
-</div>
+          <li><time class="cbp_tmtime">
+          <span>2014-07-10</span> <span>2014-07-10</time>
+          <div class="cbp_tmicon cbp_tmicon-phone"></div>
+          <div class="cbp_tmlabel">
+            <h2><a href="/jekyll/2014/07/10/what-to-do3/"> 今天做了什么4!  </a> </h2>
+            <p><p>首先，日期是不准的。</p>
 
-
-    <div class="container">
-	  <div class="page-content">
-      <div class="wrap">
-      <div class="row-fluid">
-    <div class="span12">
-        
-            <div class="row-fluid">
-                <div class="span12 ">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="post">
-                                <div class="post-hd">
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a href="/posts/2014/07/10/what-to-do/"> 今天做了什么!  </a> <br></h1>
-
-                                        <p class="post-extra">
-                                            Author:<a rel="bookmark">liuyiyou</a>| Date:
-                                             2014-07-10
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="h-dotted-line"></div>
-                                <div class="post-bd"><p>首先，日期是不准的。</p>
 <p>2:没有分类目录</p>
+
 <p>3:不支持中文</p>
+
 <p>4:首页没有进行分页</p>
-
-</div>
-                                <div class="h-dotted-line"></div>
-                                <a class="link" href="/posts/2014/07/10/what-to-do/"> More  </a>
-                                <hr>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+ </p>
+            <p> <a class="link" href="/jekyll/2014/07/10/what-to-do3/"> More  </a></p>
+          </div>
+          </li>        
         
-            <div class="row-fluid">
-                <div class="span12 ">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="post">
-                                <div class="post-hd">
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a href="/posts/2014/07/09/start-from-zero/"> 从零开始使用jeklly在!  </a> <br></h1>
+          <li><time class="cbp_tmtime">
+          <span>2014-07-10</span> <span>2014-07-10</time>
+          <div class="cbp_tmicon cbp_tmicon-phone"></div>
+          <div class="cbp_tmlabel">
+            <h2><a href="/jekyll/2014/07/10/what-to-do2/"> 今天做了什么3!  </a> </h2>
+            <p><p>首先，日期是不准的。</p>
 
-                                        <p class="post-extra">
-                                            Author:<a rel="bookmark">liuyiyou</a>| Date:
-                                             2014-07-09
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="h-dotted-line"></div>
-                                <div class="post-bd"><h3>做了些什么？</h3>
-<p>
-1：搭建了一个github静态网站
-2：绑定了顶级域名和二级域名，不过二级暂时不会用，先学会走再跑
-3：通过jekyll搭建一个静态博客
-"\n\n\n"
-<p>
-<h3>一些需要修改的地方</h3>
-1：导航的时候增加一个page，不能自定义排序，且该page中不能使用中文，而其他的地方却可以
+<p>2:没有分类目录</p>
 
-</p></p>
-</div>
-                                <div class="h-dotted-line"></div>
-                                <a class="link" href="/posts/2014/07/09/start-from-zero/"> More  </a>
-                                <hr>
-                            </div>
-                        </div>
+<p>3:不支持中文</p>
 
-                    </div>
-                </div>
-            </div>
+<p>4:首页没有进行分页</p>
+ </p>
+            <p> <a class="link" href="/jekyll/2014/07/10/what-to-do2/"> More  </a></p>
+          </div>
+          </li>        
         
-            <div class="row-fluid">
-                <div class="span12 ">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="post">
-                                <div class="post-hd">
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a href="/posts/2014/07/09/welcome-to-jekyll/"> Welcome to Jekyll!  </a> <br></h1>
+          <li><time class="cbp_tmtime">
+          <span>2014-07-10</span> <span>2014-07-10</time>
+          <div class="cbp_tmicon cbp_tmicon-phone"></div>
+          <div class="cbp_tmlabel">
+            <h2><a href="/jekyll/2014/07/10/what-to-do1/"> 今天做了什么2!  </a> </h2>
+            <p><p>首先，日期是不准的。</p>
 
-                                        <p class="post-extra">
-                                            Author:<a rel="bookmark">liuyiyou</a>| Date:
-                                             2014-07-09
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="h-dotted-line"></div>
-                                <div class="post-bd"><p>使用中文
-You’ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
-To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+<p>2:没有分类目录</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>3:不支持中文</p>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>.</p>
-
-</div>
-                                <div class="h-dotted-line"></div>
-                                <a class="link" href="/posts/2014/07/09/welcome-to-jekyll/"> More  </a>
-                                <hr>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+<p>4:首页没有进行分页</p>
+ </p>
+            <p> <a class="link" href="/jekyll/2014/07/10/what-to-do1/"> More  </a></p>
+          </div>
+          </li>        
         
-    </div>
-</div>
-      </div>
-    </div>
-	</div>
+          <li><time class="cbp_tmtime">
+          <span>2014-07-10</span> <span>2014-07-10</time>
+          <div class="cbp_tmicon cbp_tmicon-phone"></div>
+          <div class="cbp_tmlabel">
+            <h2><a href="/jekyll/2014/07/10/what-to-do/"> 今天做了什么!  </a> </h2>
+            <p><p>首先，日期是不准的。</p>
 
-	
+<p>2:没有分类目录</p>
+
+<p>3:不支持中文</p>
+
+<p>4:首页没有进行分页</p>
+ </p>
+            <p> <a class="link" href="/jekyll/2014/07/10/what-to-do/"> More  </a></p>
+          </div>
+          </li>        
+        
+
+
     
+
+
+
+          </ul>
+      </div>
+    
+
+       
+<div>
+			<button id="fetchNextData" class="btn btn-large btn-info" style="width:100%;">More</button>
+			
+<div class="pagination">
+  
+    <span>&laquo; Prev</span>
+  
+
+  
+    
+      <em>1</em>
+    
+  
+    
+      <a href="/page2">2</a>
+    
+  
+
+  
+    <a href="/page2">Next &raquo;</a>
+  
+</div>
+
+</div>
    
+
+ <script type="text/javascript">
+        var array = [];
+        for(var i=2;i<=2;i++){
+             array.push(i);
+        }
+        var bArray = array.reverse(); 
+       
+        $("#fetchNextData").click(function(){
+          var page =   bArray.pop();
+          var $this = $(this);
+          $this.addClass("disabled").text("Loding");
+      
+          $.ajax({
+              url: "/page"+page,
+               type: 'get',
+               dataType: 'html',
+               success: function(data) {
+                $this.removeClass("disabled").text("More");
+                var $content =  $(data).find('ul');
+                  $(".cbp_tmtimeline").append($content.html());
+               }
+          });
+    });
+
+  
+    $("#category").click(function(){
+      //$("body").addClass("cbp-spmenu-push-toright");
+      $("#cbp-spmenu-s1").addClass("cbp-spmenu-open");
+    });
+
+
+    $("#cbp-spmenu-s1").click(function(event) {
+       $("#cbp-spmenu-s1").removeClass("cbp-spmenu-open");
+    });
+</script>
+
+
+
+     </div>
     </body>
+
 </html>

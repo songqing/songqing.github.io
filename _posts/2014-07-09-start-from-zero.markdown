@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: index
 title:  "从零开始使用jeklly在!"
 date:   2014-07-09 10:05:01
 categories: posts
@@ -10,7 +10,7 @@ categories: posts
 1：搭建了一个github静态网站
 2：绑定了顶级域名和二级域名，不过二级暂时不会用，先学会走再跑
 3：通过jekyll搭建一个静态博客
-"\n\n\n"
+
 <p>
 <h3>一些需要修改的地方</h3>
 1：导航的时候增加一个page，不能自定义排序，且该page中不能使用中文，而其他的地方却可以
