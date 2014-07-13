@@ -2,8 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title>{{ page.title }}</title>
     {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
     <meta name="author" content="{{ site.author.name }}">
@@ -11,23 +9,22 @@
     <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap styles -->
-    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Optional theme -->
-    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- Sticky Footer -->
-   
-    <!-- Custom styles -->
-   
-    <link href="{{ ASSET_PATH }}/css/base.css" rel="stylesheet">
-    <link href="{{ ASSET_PATH }}/css/default.css" rel="stylesheet">
-    <link href="{{ ASSET_PATH }}/css/timeline.css" rel="stylesheet">
-    <link href="{{ ASSET_PATH }}/css/menu.css" rel="stylesheet">
-    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
+    <!-- Le styles -->
+    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
-  
-
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
 
     <!-- atom & rss feed -->
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -35,107 +32,38 @@
 
   </head>
 
-  <body>
-
-   <div class="container">
-<header class="clearfix">
-        <span>liuyiyou.cn <span class="bp-icon bp-icon-about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
-        <h1>Index Timeline</h1>
-        <nav>
-          <a href="/"  ><span>Index</span></a>
-          <a id="category" href="javascript:void(0)" ><span>Category</span></a>
-          <a href=""><span>Archive</span></a>
-          <a href="" ><span>About</span></a>
-        </nav>
-</header>
-
-
-<div class="main">
-          <ul class="cbp_tmtimeline">
-              {{ content }}
+  <body id="post-index">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
+          <ul class="nav">
+            {% assign pages_list = site.pages %}
+            {% assign group = 'navigation' %}
+            {% include JB/pages_list %}
           </ul>
+        </div>
       </div>
+    </div>
 
-        
-<div>
-      <button id="fetchNextData" class="btn btn-large btn-info" style="width:100%;">More</button>
-      {% if paginator.total_pages > 1 %}
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-  {% else %}
-    <span>&laquo; Prev</span>
-  {% endif %}
+    <div id="main">
 
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <em>{{ page }}</em>
-    {% elsif page == 1 %}
-      <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-    {% else %}
-      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
+        {{ content }}
 
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-  {% else %}
-    <span>Next &raquo;</span>
-  {% endif %}
-</div>
-{% endif %}
-</div>
-   
-
- <script type="text/javascript">
-        var array = [];
-        for(var i=2;i<={{paginator.total_pages}};i++){
-             array.push(i);
-        }
-        var bArray = array.reverse(); 
-       
-        $("#fetchNextData").click(function(){
-          var page =   bArray.pop();
-          var $this = $(this);
-          $this.addClass("disabled").text("Loding");
-      
-          $.ajax({
-              url: "/page"+page,
-               type: 'get',
-               dataType: 'html',
-               success: function(data) {
-                $this.removeClass("disabled").text("More");
-                var $content =  $(data).find('ul');
-                  $(".cbp_tmtimeline").append($content.html());
-               }
-          });
-    });
-
-  
-    $("#category").click(function(){
-      //$("body").addClass("cbp-spmenu-push-toright");
-      $("#cbp-spmenu-s1").addClass("cbp-spmenu-open");
-    });
-
-
-    $("#cbp-spmenu-s1").click(function(event) {
-       $("#cbp-spmenu-s1").removeClass("cbp-spmenu-open");
-    });
-</script>
-
-
-
-
-   </div>
-  
-   
-
+    </div>
+	    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+<!-- UY END -->
+	<div class="footer-wrapper">
+		<footer>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+	  
+	 </div>
     {% include JB/analytics %}
-
-
-    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{ ASSET_PATH }}/bootstrap/js/jquery.js"></script>
-    
   </body>
 </html>
