@@ -1,53 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-
- 
-
-     <body class="cbp-spmenu-push">
-	<nav
-		class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left"
-		id="cbp-spmenu-s1">
-	<h3>Category</h3>
-	 {% for category in site.categories %}
-    
-	
-	<a href="/categories/{{ category | first }}/" title="view all posts">{{ category | first }} {{ category | last | size }}</a>
-	
-	
-    {% endfor  %}
-	
-	
-	</nav>
- <div class="container">
-  {% include head2.html %}
-    {% include header2.html %}
-
-    <div class="container">
-	 
-      <div class="main">
-      {{ content }}
-      </div>
-   
-	
-
-	</div>
-
-	
-    {% include footer.html %}
-   </div>
-   <script type="text/javascript">
-    
-
-  
-    $("#category").click(function(){
-
-      $("#cbp-spmenu-s1").addClass("cbp-spmenu-open");
-    });
-
-
-    $("#cbp-spmenu-s1").click(function(event) {
-       $("#cbp-spmenu-s1").removeClass("cbp-spmenu-open");
-    });
-</script>
-    </body>
-</html>
+---
+theme :
+  name : twitter
+---
+{% include JB/setup %}
+{% include themes/twitter/default.html %}
