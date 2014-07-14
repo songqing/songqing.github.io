@@ -36,7 +36,8 @@ a:focus {
 	outline-offset:-2px
 }
 a:hover,a:active {
-	outline:0
+	outline:0;
+	text-decoration:none;
 }
 sub,sup {
 	position:relative;
@@ -104,6 +105,34 @@ textarea {
 	background:transparent!important;
 	box-shadow:none!important
 }
+
+a {
+	color:#222;
+	text-decoration:none
+}
+a:visited {
+	color:#0088cc
+}
+a:hover {
+	color:#0088cc
+}
+a:focus {
+	color:#0088cc;
+	text-decoration:none;
+	outline:thin dotted
+}
+a:hover,a:active {
+    color:#0088cc;
+	outline:0;
+	text-decoration:none;
+}
+.link-arrow {
+	font-style:normal;
+	font-weight:100;
+	text-decoration:underline
+}
+
+
 a,a:visited {
 	text-decoration:underline
 }
@@ -306,29 +335,7 @@ h4{
 font-size: 10px;
 }
 
-a {
-	color:#222;
-	text-decoration:none
-}
-a:visited {
-	color:#0088cc
-}
-a:hover {
-	color:#0088cc
-}
-a:focus {
-	color:#0088cc;
-	text-decoration:none;
-	outline:thin dotted
-}
-a:hover,a:active {
-	outline:0
-}
-.link-arrow {
-	font-style:normal;
-	font-weight:100;
-	text-decoration:underline
-}
+
 figcaption {
 	padding-top:10px;
 	font-size:14px;
