@@ -290,9 +290,22 @@ h1,h2,h3,h4,h5,h6 {
 	font-family:'Lato',Calibri,Arial,sans-serif
 }
 h1 {
-	font-size:22px;
-	font-size:2rem
+font-size: 25px;
+font-size: 1.2rem;
 }
+
+h2{
+font-size: 20px;
+}
+
+h3{
+font-size: 15px;
+}
+
+h4{
+font-size: 10px;
+}
+
 a {
 	color:#222;
 	text-decoration:none
@@ -3469,6 +3482,10 @@ box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
 	padding:50px 80px;
 	margin-bottom:30px
 }
+
+
+
+ 
 }.footer-wrapper {
 	margin:2em auto;
 	color:#555;

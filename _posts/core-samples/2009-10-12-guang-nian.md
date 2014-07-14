@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "光年!"
-date:   2014/7/13 21:23:14 
-category: poem
+title:  "光年"
+date:   2009/10/12 21:23:14 
+category: 美文-诗
 ---
 
 {% include JB/setup %}
