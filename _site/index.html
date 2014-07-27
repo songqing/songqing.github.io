@@ -229,6 +229,141 @@
   <header>
     <div class="entry-meta">
       <span class="entry-date date published updated">
+	  <time datetime="July 26, 2014"><a href="/2014/07/26/spring-validator">July 26, 2014</a></time>
+	  </span>
+	  <span class="author vcard"><span class="fn"><a href="/2014/07/26/spring-validator" title="liuyiyou">liuyiyou</a></span></span>
+	  &nbsp; • &nbsp;<span class="entry-comments"><a href="/2014/07/26/spring-validator#ds-thread">Comment</a></span>
+      
+      <span class="entry-reading-time pull-right">
+        <i class="fa fa-clock-o"></i>
+        
+        Reading time ~1 minute
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="/2014/07/26/spring-validator" rel="bookmark" title="Spring验证详解 " itemprop="url">Spring验证详解 </a></h1>
+    
+  </header>
+  <div class="entry-content">
+   
+
+<p>目标：
+Spring自带的验证方式
+基于JSR303的验证
+国际化显示错误信息
+一：使用Spring自带的验证方式
+       该种方式相对来说麻烦一点，需要为每个需要验证的实体类编写一个验证类，不过好处是可以处理多字段组合验证以及业务逻辑等复杂验证</p>
+
+<p>1.1：定义实体类（User）</p>
+
+<pre class="brush: java;">
+
+public class User {
+
+    private String username;
+
+    private String nickname;
+
+    private String password;
+
+   //省略getter /setter
+}
+
+</pre>
+
+<p>1.2:定义实体类验证类（UserValidator）
+需要继承Validator接口</p>
+
+<pre class="brush: java;">
+
+public class UserValidator implements Validator {
+
+    @Override
+    public boolean supports(Class&lt;?&gt; clazz) {
+        return User.class.equals(clazz); 
+    }
+
+public void validate(Object target, Errors errors) {
+       User user = (User)target;
+        if(StringUtils.isEmpty(user.getUsername())){
+            //1:使用这种方式，会报错(No message found under code 'empty.user.username.user.username' for locale 'zh_CN'.)，因为rejectValue的第二个参数都是errorcode
+            //errors.rejectValue("username","empty.user.username");
+            //errors.rejectValue("username","用户名不能为空");
+
+            //2:正确用法：rejectValue(String filed,String errorcode,Object[] errorArgs,String defaultMessage)
+            errors.rejectValue("username","empty.user.username","用户名不能为空Default");
+
+            //使用该种方式，不需要配置ResourceBundleMessageSource
+           // ValidationUtils.rejectIfEmpty(errors,"username","empty.user.username","用户名不能为空");
+        } else {
+           int length =  user.getUsername().length();
+            if(length&lt;=3){
+                errors.rejectValue("username","min.length.user.username","用户名长度不能小于3Default");
+            }else if (length&gt;=6){
+                errors.rejectValue("username","max.length.user.username","用户名不能大于6Default");
+            }
+
+        }
+        }
+
+}
+</pre>
+
+
+
+  </div>
+   <div class="read-more2">
+      <a href="/2014/07/26/spring-validator"  title="Spring验证详解 " >阅读全文 </a>
+   </div>
+  <!-- /.entry-content -->
+</article>
+
+
+      
+
+  <article class="hentry">
+  <header>
+    <div class="entry-meta">
+      <span class="entry-date date published updated">
+	  <time datetime="July 26, 2014"><a href="/2014/07/26/idea-properties-mac-delete-soft">July 26, 2014</a></time>
+	  </span>
+	  <span class="author vcard"><span class="fn"><a href="/2014/07/26/idea-properties-mac-delete-soft" title="liuyiyou">liuyiyou</a></span></span>
+	  &nbsp; • &nbsp;<span class="entry-comments"><a href="/2014/07/26/idea-properties-mac-delete-soft#ds-thread">Comment</a></span>
+      
+      <span class="entry-reading-time pull-right">
+        <i class="fa fa-clock-o"></i>
+        
+        Reading time ~1 minute
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="/2014/07/26/idea-properties-mac-delete-soft" rel="bookmark" title="macbook air彻底删除文件以及dea关于属性文件中文乱码 " itemprop="url">macbook air彻底删除文件以及dea关于属性文件中文乱码 </a></h1>
+    
+  </header>
+  <div class="entry-content">
+   
+<p>今天在使用idea编写代码的时候，在属性文件里面需要写中文，发现和eclipse中的不同，在eclipse中书写中文的时候，当回车的时候会自动转换成unicode编码，可是在idea中，.properties文件是中文的。这样在前台显示的时候出现了中文乱码。</p>
+
+<p>刚开始以为是那个.properties插件的问题，就把那个插件禁用，这下可惨了，所有的properties文件都不高亮了，而且无法知道该属性是否在代码中被使用了（这一点ieda很牛逼，知道你哪个地方使用了属性文件里面的某个属性），只是已txt文件查看，而且无法恢复(比如xml文件make成txt文件之后有make as xml，这个却没有)</p>
+
+
+
+  </div>
+   <div class="read-more2">
+      <a href="/2014/07/26/idea-properties-mac-delete-soft"  title="macbook air彻底删除文件以及dea关于属性文件中文乱码 " >阅读全文 </a>
+   </div>
+  <!-- /.entry-content -->
+</article>
+
+
+      
+
+  <article class="hentry">
+  <header>
+    <div class="entry-meta">
+      <span class="entry-date date published updated">
 	  <time datetime="July 21, 2014"><a href="/2014/07/21/ru-shou-macbook-air">July 21, 2014</a></time>
 	  </span>
 	  <span class="author vcard"><span class="fn"><a href="/2014/07/21/ru-shou-macbook-air" title="liuyiyou">liuyiyou</a></span></span>
@@ -574,113 +709,6 @@ Spring支持Bean Validation1.0(JSR-303)和Bean Validation1.1(JSR-349)，为了�
   </div>
    <div class="read-more2">
       <a href="/2011/03/14/chong-sheng-zhi-da-nie-pan"  title="重生之大涅槃 " >阅读全文 </a>
-   </div>
-  <!-- /.entry-content -->
-</article>
-
-
-      
-
-  <article class="hentry">
-  <header>
-    <div class="entry-meta">
-      <span class="entry-date date published updated">
-	  <time datetime="December 15, 2010"><a href="/2010/12/15/ji-yi">December 15, 2010</a></time>
-	  </span>
-	  <span class="author vcard"><span class="fn"><a href="/2010/12/15/ji-yi" title="liuyiyou">liuyiyou</a></span></span>
-	  &nbsp; • &nbsp;<span class="entry-comments"><a href="/2010/12/15/ji-yi#ds-thread">Comment</a></span>
-      
-      <span class="entry-reading-time pull-right">
-        <i class="fa fa-clock-o"></i>
-        
-        Reading time ~1 minute
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="/2010/12/15/ji-yi" rel="bookmark" title="记忆 " itemprop="url">记忆 </a></h1>
-    
-  </header>
-  <div class="entry-content">
-   
-<p>记忆中那些花朵好像永远也不会败落</p>
-
-<p>记忆中的野草也好像永远不会枯萎</p>
-
-<p>记忆中的天空好像永远湛蓝</p>
-
-<p>只是到了现在</p>
-
-<p>我才知道</p>
-
-<p>回忆</p>
-
-<p>只是定格了那些花季</p>
-
-<p>那么</p>
-
-<p>曾经的美丽便也只成了流年里永恒的寂静</p>
-
-<p>记忆是美好的</p>
-
-<p>只是回忆的时候是带着伤的</p>
-
-<p>似水的流年</p>
-
-<p>一路走来</p>
-
-<p>无可奈何花落去</p>
-
-<p>我看不到春暖花开</p>
-
-
-
-  </div>
-   <div class="read-more2">
-      <a href="/2010/12/15/ji-yi"  title="记忆 " >阅读全文 </a>
-   </div>
-  <!-- /.entry-content -->
-</article>
-
-
-      
-
-  <article class="hentry">
-  <header>
-    <div class="entry-meta">
-      <span class="entry-date date published updated">
-	  <time datetime="October 12, 2009"><a href="/2009/10/12/guang-nian">October 12, 2009</a></time>
-	  </span>
-	  <span class="author vcard"><span class="fn"><a href="/2009/10/12/guang-nian" title="liuyiyou">liuyiyou</a></span></span>
-	  &nbsp; • &nbsp;<span class="entry-comments"><a href="/2009/10/12/guang-nian#ds-thread">Comment</a></span>
-      
-      <span class="entry-reading-time pull-right">
-        <i class="fa fa-clock-o"></i>
-        
-        Reading time ~1 minute
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="/2009/10/12/guang-nian" rel="bookmark" title="光年 " itemprop="url">光年 </a></h1>
-    
-  </header>
-  <div class="entry-content">
-   
-
-<p>我会记得你的十封信，就像我会记得这些只言片语一样！
-<br />其实我们又有多少言语，能够到达彼岸阳光呢？
-<br />总有些人 在你面前–这么近，那么远
-<br />那些铺陈了往日旧时光的日子 影影绰绰，打了一个褶皱在此，重叠成无法辨认的影像
-<br />像飘散在夏末的味道 遗失了遥远的梦中，有你经过
-<br />是寂寞中寻找路途吧？
-<br />日渐荒芜 却又温暖</p>
-
-
-
-  </div>
-   <div class="read-more2">
-      <a href="/2009/10/12/guang-nian"  title="光年 " >阅读全文 </a>
    </div>
   <!-- /.entry-content -->
 </article>
