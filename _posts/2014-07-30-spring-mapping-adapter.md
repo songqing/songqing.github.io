@@ -3,7 +3,7 @@ layout: post
 category : Spring
 date: 2014/07/30 00:56:52 
 title: Spring的Mapping和Adapter的原理
-tags : [Spring,MVC]
+tags : spring
 ---
 {% include JB/setup %}
 

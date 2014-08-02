@@ -3,7 +3,7 @@ layout: post
 title:  "Spring验证"
 date:   2014/06/30 14:17:14 
 category: Spring
-tag: [spring,validator]
+tag: spring
 ---
 
 <p>在spring中，有三种不同的方式执行验证，基于注解，基于spring validator或者混合两种，并没有一种所谓的“最好的”的验证方式，但是也许有一种适合你！

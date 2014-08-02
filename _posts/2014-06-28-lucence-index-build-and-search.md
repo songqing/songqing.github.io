@@ -1,7 +1,7 @@
 ---
 layout: post
 category : lucence
-date: 2013/10/11 1:21:52 
+date: 2014/06/28 1:21:52 
 title: Lucence索引的建立和搜索
 tags : [lucence]
 ---

@@ -2,7 +2,8 @@
 layout: post
 title:  "macbook air彻底删除文件以及dea关于属性文件中文乱码"
 date:   2014/07/26 19:23:14 
-category: 工具使用
+category: tools
+tag: tools
 ---
 
 今天在使用idea编写代码的时候，在属性文件里面需要写中文，发现和eclipse中的不同，在eclipse中书写中文的时候，当回车的时候会自动转换成unicode编码，可是在idea中，.properties文件是中文的。这样在前台显示的时候出现了中文乱码。

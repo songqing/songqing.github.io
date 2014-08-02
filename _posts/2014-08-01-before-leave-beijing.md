@@ -2,7 +2,7 @@
 layout: post
 title:  "离开北京"
 date:   2014/08/01 15:40:14 
-category: 生活随笔
+category: life
 tag: life
 ---
 

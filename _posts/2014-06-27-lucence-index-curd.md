@@ -1,7 +1,7 @@
 ---
 layout: post
 category : lucence
-date: 2013/10/11 9:21:52 
+date: 2014/06/27 9:21:52 
 title: Lucence对索引进行增删改查
 tags : [lucence]
 ---

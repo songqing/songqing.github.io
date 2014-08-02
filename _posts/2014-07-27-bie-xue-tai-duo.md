@@ -2,7 +2,8 @@
 layout: post
 title:  "读《别因为学习太多反而压垮自己》有感"
 date:   2014/07/27 19:23:14 
-category: 生活随笔
+category: life
+tag: life
 ---
 
 最近在伯乐在线上看到了一篇文章《别因为要学的太多反而压垮自己》深有感触，特别是搞java的，因为开源，所以各种个样的框架好多好多，而且各个层都有一大堆的框架，比如控制层有spring-mvc有struts有play以及servlet等，数据层有hibernate,mybaits，jdbc。哪怕就是一个布局，也有tiles，sitemash。此外还要会点jquery吧，dwr吧

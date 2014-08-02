@@ -3,7 +3,7 @@ layout: post
 category : spring
 date: 2014/07/26 21:21:52 
 title: Spring验证详解
-tags : [spring,validator]
+tags : spring
 ---
 {% include JB/setup %}
 
