@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "这段时间的一个总结"
-date:   2014/08/04 15:40:14 
+date:   2014/08/02 15:40:14 
 category: life
 tag: life
 ---
