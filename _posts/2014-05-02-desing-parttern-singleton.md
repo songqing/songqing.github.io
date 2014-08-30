@@ -19,6 +19,8 @@ tags : Design_pattern
 
 ###使用方式：
 
+
+
 第一种：饿汉式：在类初始化时，已经自行实例化
 
 <pre class="brush: java;">
