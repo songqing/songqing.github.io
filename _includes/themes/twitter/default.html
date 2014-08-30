@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
-    <meta name="author" content="{{ site.author.name }}">
+      <meta charset="utf-8">
+      {% if page.title %}<title>{{ page.title }}</title>{% else %}
+          <title>温故而知新，触类而旁通</title>
+      {% endif %}
+      {% if page.description %}<meta name="description" content="{{ page.description }}">
+     {% endif %}
+     <meta name="author" content="{{ site.author.name }}">
+     <meta name="keywords" content="温故而知新，触类而旁通">
+     <meta name="baidu-site-verification" content="MPWwBNOzay" />
 
     <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +30,15 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
+  <script type="text/javascript" src = "{{ ASSET_PATH }}/SyntaxHighlighter/shCore.js"></script>
+  <script type="text/javascript" src = "{{ ASSET_PATH }}/SyntaxHighlighter/shBrushJava.js"></script>
+  <script type="text/javascript" src = "{{ ASSET_PATH }}/SyntaxHighlighter/shBrushXml.js"></script>
+    <link href="{{ ASSET_PATH }}/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" type="text/css" media="all">
+      
+  <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+
 
     <!-- atom & rss feed -->
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">

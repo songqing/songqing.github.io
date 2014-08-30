@@ -50,7 +50,6 @@
         <div class="container-narrow">
           <a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
           <ul class="nav">
-            <li><a href="http://blog.liuyiyou.cn">博客</a></li>
             {% assign pages_list = site.pages %}
             {% assign group = 'navigation' %}
             {% include custom/pages_list %}
@@ -59,6 +58,7 @@
             {% assign pages_list = site.pages %}
             {% assign group = 'meta' %}
             {% include custom/pages_list %}
+            <li><a href="http://blog.liuyiyou.cn">Lofter</a></li>
           </ul>
         </div>
       </div>

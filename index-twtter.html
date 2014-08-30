@@ -2,28 +2,14 @@
 layout: page
 ---
 {% include JB/setup %}
-
+<ul>
 {% for post in paginator.posts %}
-  <div class="article hentry">
-  <div class="header">
-      <h1 class="entry-title"><a href="{{ BASE_PATH }}{{ post.url }}" rel="bookmark" title="{{ post.title }} " itemprop="url">{{ post.title }} </a></h1>
-    
-  </div>
-  <div class="entry-content">
-   
-{{ post.excerpt }}
-
-  </div>
-   <div class="read-more2">
-      <a href="{{ BASE_PATH }}{{ post.url }}"  title="{{ post.title }} " >阅读全文 </a>
-   </div>
-  <!-- /.entry-content -->
-</div>
-
-
-      
+  <li> <a href="{{ BASE_PATH }}{{ post.url }}"  title="{{ post.title }} " >{{ post.title }} </a>
+  </li>
 {% endfor %}
-<!-- Pagination links -->
+</ul>
+
+
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
@@ -49,3 +35,6 @@ layout: page
   {% endif %}
 </div>
 {% endif %}
+
+
+
