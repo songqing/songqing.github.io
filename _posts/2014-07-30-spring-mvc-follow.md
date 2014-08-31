@@ -29,6 +29,10 @@ tags : spring
 - ModelAndView的逻辑视图名—》ViewResolver，ViewResolver将吧逻辑视图名解析为具体的View，View会根据传过来的的模型数据进行渲染，此处的Model实际是一个map结构。通过这种策略模式很容易支持其他视图技术。核心代码  render(mv, processRequest,response).
 返回授权给DispatchServlet, 由DispatchServlet返回给响应用户。
 
+##流程图
+![Alt text]({{ BASE_PATH }}/assets/images/spring-mvc.png "SpringMVC流程")
+
+
 
 ###Spring-MVC涉及到的主要组件
 - HandlerMapping  处理映射器
