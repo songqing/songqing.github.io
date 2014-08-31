@@ -1,3 +1,10 @@
+---
+layout: page
+group: meta
+title: 更新日志
+---
+{% include JB/setup %}
+
 ## Changelog
 
 Public releases are all root nodes.  
