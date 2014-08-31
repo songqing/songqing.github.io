@@ -14,7 +14,10 @@ tags : Android
 1. 需要加入support-v4的依赖包
 
 
-###
+###重点：
+1. 侧边栏需要继承Fragment
+2. ActionBar
+3. 
 
 <pre class="brush: xml;">
 
