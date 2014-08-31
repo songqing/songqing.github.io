@@ -7,26 +7,26 @@ tags : spring
 ---
 {% include JB/setup %}
 
-<p>目的：</p>
-<p>该项目通过运行一个最简单的Spring-mvc项目，来分析Spring-mvc的流程，尽量做到配置最少，为了更加了解运行过程，不使用注解，而是使用2.5时候的方式。</p>
-<p>之前用过了无数次Spring-mvc也了解过其中的运行原理，但是都是看别人的代码，自己只是偶尔浏览偶尔记忆，但是别人的始终是别人的，不自己试一遍终究了解得不深刻，也许别人某个角落里面的一句话你会常常忽略，直到解决了某个困惑了自己很久的问题才发现原来别人已经说了，只是你没有看到。所以我自己也分析了一下。</p>
+###概述
 
-一般的过程是：
-<ul>
-    <li>在web.xml中配置DispatchServlet</li>
-    <li>HandlerMapping配置请求到处理器的映射</li>
-    <li>HandlerAdapter配置，从而支持多种类型的处理器</li>
-    <li>ViewResolver配置，从而将逻辑视图名解析为具体视图技术</li>
-    <li>处理器配置：即Controler配置</li>
-</ul>
-<p>其中，HandlerMapping,HandlerAdapter,ViewResolver都使用默认的实现，刚开始，我们不配置，来看看默认实现</p>
+该项目通过运行一个最简单的Spring-mvc项目，来分析Spring-mvc的流程，尽量做到配置最少，为了更加了解运行过程，不使用注解，而是使用2.5时候的方式。
+
+之前用过了无数次Spring-mvc也了解过其中的运行原理，但是都是看别人的代码，自己只是偶尔浏览偶尔记忆，但是别人的始终是别人的，不自己试一遍终究了解得不深刻，也许别人某个角落里面的一句话你会常常忽略，直到解决了某个困惑了自己很久的问题才发现原来别人已经说了，只是你没有看到。所以我自己也分析了一下
+
+###一般的过程是：
+- 在web.xml中配置DispatchServlet
+- HandlerMapping配置请求到处理器的映射
+- HandlerAdapter配置，从而支持多种类型的处理器
+- ViewResolver配置，从而将逻辑视图名解析为具体视图技术
+- 处理器配置：即Controler配置
+
+其中，HandlerMapping,HandlerAdapter,ViewResolver都使用默认的实现，刚开始，我们不配置，来看看默认实现
 
 
+###配置如下
+在web.xml中配置DispatchServlet
 
-<p>配置如下：</p>
-<p>在web.xml中配置DispatchServlet:</p>
 <pre class="brush: xml;">
-
         <servlet>
             <servlet-name>dispatcher</servlet-name>
             <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -41,11 +41,10 @@ tags : spring
             <url-pattern>/</url-pattern>
         </servlet-mapping>
 
-
-
-
 </pre>
-<p>处理器：</p>
+
+处理器或者控制器：
+
 <pre class="brush: java;">
     public class ControllerTest implements Controller {
 
@@ -61,28 +60,28 @@ tags : spring
 }
 </pre>
 
-<p>spring-web.xml</p>
+spring-web.xml
+
 <pre class="brush: xml;">
     <bean name="/test" class="cn.liuyiyou.spring.simple.web.ControllerTest"></bean>
 </pre>
 
-<p>这样的情况下，访问/simple/test即可访问。因为默认使用了BeanNameUrlMapping和SimpleControllerAdpter。所以配置了：
+这样的情况下，访问/simple/test即可访问。因为默认使用了BeanNameUrlMapping和SimpleControllerAdpter。所以配置了：
 
-</p>
 <pre class="brush: xml;">
     <bean name="/test" class="cn.liuyiyou.spring.simple.web.ControllerTest"></bean>
 </pre>
-<p>
-的时候，当访问一个/test时，会映射到处理器  ControllerTest。而SimpleControlerAdapter则会适配实现了Controller接口的类，并使用其中的handleRequest方法来处理业务逻辑</p>
+的时候，当访问一个/test时，会映射到处理器  ControllerTest。而SimpleControlerAdapter则会适配实现了Controller接口的类，并使用其中的handleRequest方法来处理业务逻辑
 
-<br>
-<br>
-<p>来做一个实验，之前在使用注解的时候都是使用</p>
-<pre class="brush: xml;"><mvc-annotation-driver />
- </pre>
- <p>来实现，而且在控制器中需要在类上使用@Controller并且在方法中使用@RequestMapping。
+来做一个实验，之前在使用注解的时候都是使用
 
-我们不这样使用，而是使用BeanNameUrlMapping和AnnotationMethodHandlerAdapter这种奇葩的组合方式。</p>
+<pre class="brush: xml;">
+    <mvc-annotation-driver />
+</pre>
+
+来实现，而且在控制器中需要在类上使用@Controller并且在方法中使用@RequestMapping。
+
+我们不这样使用，而是使用BeanNameUrlMapping和AnnotationMethodHandlerAdapter这种奇葩的组合方式。
 
 <pre class="brush: xml;">
 <bean name="/test2" class="cn.liuyiyou.spring.simple.web.ControllerTest2"></bean>
@@ -114,19 +113,13 @@ return "test3.jsp";
 
 debug：
 
-<pre class="brush: xml;">
-BeanNameUrlHandlerMapping]Mapped URL path [/test2] onto handler '/test2’
-</pre>
+> BeanNameUrlHandlerMapping]Mapped URL path [/test2] onto handler '/test2’
+> .DefaultAnnotationHandlerMapping]Rejected bean name '/test2': no URL paths identified
+
+
 可以看到test2已经映射到处理器了。
 
-<pre class="brush: xml;">
-.DefaultAnnotationHandlerMapping]Rejected bean name '/test2': no URL paths identified
-</pre>
-
-<p>
 可以看到并没有映射到test2.因为没有在上面注解@Controller，而是通过BeanNameUrlHandlerMapping来实现的。而具体的处理方法是通过AnnotationMethodHandlerAdapter适配器来访问的。
- </p>
 
- <p>当使用了mvc-annotation-driver的时候，使用了默认的DefaultAnnotationMapping和AnnotationAdapter，前者会将请求映射到使用@Controller的处理器，后者将会将注解了@RequestMapping的方法处理业务逻辑，并返回ModelAndView给DispatchServlet来进行渲染，在3.2中，则会使用RequestMethodMapping和RequestMthodAdapter来替代上面的两个类。</p>
-
+当使用了mvc-annotation-driver的时候，使用了默认的DefaultAnnotationMapping和AnnotationAdapter，前者会将请求映射到使用@Controller的处理器，后者将会将注解了@RequestMapping的方法处理业务逻辑，并返回ModelAndView给DispatchServlet来进行渲染，在3.2中，则会使用RequestMethodMapping和RequestMthodAdapter来替代上面的两个类。
 
