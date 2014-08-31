@@ -1,16 +1,14 @@
 ---
 layout: post
 category : datastruts
-date: 2013/01/01 00:00:00 
-title: 排序之冒泡排序
+date: 2013/01/01 01:00:00 
+title: 排序之选择排序
 tags : datastruts
 ---
 {% include JB/setup %}
 
 ##概述
-冒泡排序：它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。
-
-这个算法的名字由来是因为越大的元素会经由交换慢慢“浮”到数列的顶端，故名
+选择排序：每一趟从待排序的数据元素中选出最小（或最大）的一个元素，顺序放在已排好序的数列的最后，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法
 
 ##算法原理
 冒泡排序算法的运作如下：（从后往前）
@@ -41,82 +39,66 @@ $$M_{max} = \frac{3n(n-1)}{2} = O(n^2)$$
 冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。
 
 ###算法描述
+
 <pre class="brush: java;">
 
 package cn.liuyiyou.sort;
 
 /**
- * 冒泡排序：
+ * 每一趟从待排序的数据元素中选出最小（或最大）的一个元素，顺序放在已排好序的数列的最后，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法。
  * User: liuyiyou
  * Date: 14-8-21
- * Time: 下午4:04
+ * Time: 下午5:28
  */
-public class BubbleSort {
+public class SelectSort {
 
 
-    /**
-     * 这个是冒泡排序，冒泡排序是待排序的数和后面相邻的数比较大小
-     * 注意内层循环中j的取值变化，之前i的初始值是1，j的临界值是array.length。
-     * @param array
-     */
-    public static void bubbleSort1(int[] array){
-        for (int i=0;i<array.length;i++){
-            for (int j = 0; j<array.length-i-1;j++ ){
-                if (array[j] > array[j+1]){
-                    SortUtil.swap(array,j,j+1);
+    //每一趟从待排序的数据元素中选出最小（或最大）的一个元素，顺序放在已排好序的数列的最后，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法。
+    public static void selectSort(int[] array) {
+        if ((array == null) || (array.length == 0)) return;
+        int minIndex = 0;
+        for (int i = 0; i < array.length; i++) {
+            minIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[minIndex] > array[j]) {
+                    minIndex = j;
                 }
             }
-            SortUtil.print(array, i);
+            SortUtil.swap(array,i, minIndex);
+            SortUtil.print(array,i);
         }
     }
 
 
-    /**
-     *
-     * @param array
-     */
-    public static void bubbleSort2(int[] array){
-        for (int i=0;i<array.length;i++){
-            for (int j = 0; j< i;j++ ){
-                if (array[i]<array[j]){
-                    SortUtil.swap(array,i,j);
+    //这个就是稳定算法了
+    public static void selectSort2(int array[]) {
+        int minIndex = 0;
+        if ((array == null) || (array.length == 0)) return;
+        for (int i = 0; i < array.length; i++) {
+            minIndex = i;//无序区的最小数据数组下标
+            for (int j = i + 1; j < array.length; j++) {//在无序区中找到最小数据并保存其数组下标
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
                 }
             }
-            SortUtil.print(array, i);
+            if (minIndex != i) {//如果不是无序区的最小值位置且不是默认的第一个数据，则交换之。
+                SortUtil.swap(array,i,minIndex);
+            }
+            SortUtil.print(array,i);
         }
     }
 
 
-    public static void bubbleSort3(int[] array) {
-        for (int i = 0; i < array.length - 1; i++) { // 最多做n-1趟排序
-            // 对当前无序区间score[0......length-i-1]进行排序(j的范围很关键，这个范围是在逐步缩小的)
-            for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] < array[j + 1]) { // 把小的值交换到后面
-                    SortUtil.swap(array, j, j + 1);
-                }
-            }
-
-            SortUtil.print(array, i);
-        }
-    }
-
-
-
-
-
-    public static void main(String [] args){
-
+    public static void main(String[] args) {
 
         int [] array = SortUtil.array;
         System.out.println("原始排序结果：");
         SortUtil.print(array);
-        bubbleSort3(array);
+        selectSort2(array);
         System.out.println("最终排序结果：");
         SortUtil.print(array);
 
-
     }
-
 }
 
 
