@@ -10,13 +10,13 @@ tag: spring
 
 Spring支持Bean Validation1.0(JSR-303)和Bean Validation1.1(JSR-349)，为了保持向前兼容，同时支持Spring validator接口。
 
-<pre class="brush: java;">
+```c
 
 	public class User{
 	   private String name;
 	   .....
 	}
-</pre>
+```
 
 ###第一种：###
 如果使用spring3.x和简单的验证，使用<code>javax.validation.constraints</code>注解。即jsr-303

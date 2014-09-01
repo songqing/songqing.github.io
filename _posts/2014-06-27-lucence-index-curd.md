@@ -16,7 +16,7 @@ tags : [lucence]
 
 
 
-<pre class="brush: java;">
+{% highlight java %}
 public class IndexUtil {
     private String[] ids = { "1", "2", "3", "4", "5", "6" };
     private String[] emails = { "aa@itat.com", "bb@itat.org", "cc@cc.com",
@@ -59,7 +59,6 @@ public class IndexUtil {
     }
     /**
      * Filed.index(索引选项)
-     * <p>
      * Index.ANALYZED：进行分词和索引，适用用于标题和内容
      * Index.NOT_ANALYZED:不进行分词，进行索引，如果身份证号码，姓名，id等，适用于精确搜索
      * Index>ANALYZED_NOT_NORNS：进行分词但是不存储norms信息。这个norms中包括了创建索引的时间和权值信息
@@ -269,5 +268,4 @@ public class IndexUtil {
         }
     }
 }
-
-</pre>
+{% endhighlight %}

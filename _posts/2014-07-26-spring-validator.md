@@ -16,8 +16,7 @@ Spring自带的验证方式
 
 1.1：定义实体类（User）
 
-<pre class="brush: java;">
-
+{% highlight java %}
 public class User {
 
     private String username;
@@ -29,7 +28,9 @@ public class User {
    //省略getter /setter
 }
 
-</pre>
+{% endhighlight %}
+
+
 
 1.2:定义实体类验证类（UserValidator）
 需要继承Validator接口

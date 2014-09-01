@@ -1,6 +1,96 @@
----
-theme :
-  name : liuyiyou
----
-{% include JB/setup %}
-{% include themes/liuyiyou/default.html %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ {% include head.html %}
+<body>
+
+<div class="blog-masthead">
+    <div class="container">
+        {% include navbar.html %}
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="blog-header">
+        
+    </div>
+    <div class="row">
+
+        <div class="col-sm-9 blog-main">
+
+           
+             {{ content }}    
+            
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3  blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>关于本站</h4>
+                <p>温故而知新，触类而旁通</p>
+                <p><a href="http://blog.liuyiyou.cn">Lofter使用blog.liuyiyou.cn</a></p>
+                <p>版本和样式，基本不会改动了</p>
+            </div>
+            <div class="sidebar-module">
+                <h4>联系我</h4>
+                <ol class="list-unstyled">
+                    <li><a href="https://github.com/liuyiyou">GitHub</a></li>
+                    <li><a href="http://weibo.com/virgots">Weibo</li>
+                    <li><a href="https://twitter.com/liuyiyoucool">Twitter</a></li>
+                    <li><a href="https://www.facebook.com/liu.yiyou.35">Facebook</a></li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                {% include recently_posts.html %}
+            </div>
+            <div class="sidebar-module">
+                {% include recently_comments.html %}
+            </div>
+
+            <div class="sidebar-module">
+                {% include  recently_visitors.html %}
+            </div>
+
+
+        </div><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+
+<!-- Pagination links -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
+  {% endif %}
+</ul>
+{% endif %}
+
+
+
+</div><!-- /.container -->
+
+ {% include  footer.html %}
+
+
+
+</body>
+</html>

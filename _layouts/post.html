@@ -1,5 +1,52 @@
----
-layout: default
----
-{% include JB/setup %}
-{% include themes/liuyiyou/post.html %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ {% include head.html %}
+<body>
+
+<div class="blog-masthead">
+    <div class="container">
+        {% include navbar.html %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="blog-header">
+        
+    </div>
+    <div class="row">
+
+        <div class="col-sm-12 blog-main">
+
+            <div class="blog-post">
+             <h2 class="blog-post-title"><a href="{{ page.url }}">{{ page.title }}</a></h2>
+<p class="blog-post-meta">{{ page.date | date_to_string }}</p>
+<div class="blog-post-content">{{ content }}</div> 
+            </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+
+
+<ul class="pager">
+  {% if page.previous %}
+  <li class="previous"><a  href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Prev</a></li>
+  {% else %}
+  <li class="previous disabled"><a href="#">&larr; Prev</a></li>
+  {% endif %}
+  {% if page.next %}
+  <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+  {% else %}
+  <li class="next disabled"><a href="#">Next &rarr;</a></li>
+  {% endif %}
+</ul>
+
+{% include comments.html %}
+
+
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+{% include footer.html %}
+
+</body>
+</html>
