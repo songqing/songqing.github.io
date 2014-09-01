@@ -5,7 +5,7 @@ date: 2014/07/26 21:21:52
 title: Spring验证详解
 tags : spring
 ---
-{% include JB/setup %}
+
 
 目标：
 Spring自带的验证方式

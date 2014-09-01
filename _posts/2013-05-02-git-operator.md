@@ -5,7 +5,7 @@ date: 2013/05/02 00:56:52
 title: git操作合集
 tags : github
 ---
-{% include JB/setup %}
+
 
 ###概述
 git是一个分布式代码管理工具，所以支持多个仓库，在git里，服务器上的仓库在本地称为remote。

@@ -5,7 +5,7 @@ date: 2014/06/28 1:21:52
 title: Lucence索引的建立和搜索
 tags : [lucence]
 ---
-{% include JB/setup %}
+
 
 ###建立索引的步骤
 1. 创建Directory

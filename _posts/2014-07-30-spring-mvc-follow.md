@@ -5,7 +5,7 @@ date: 2014/07/30 01:56:52
 title: Spring的MVC流程
 tags : spring
 ---
-{% include JB/setup %}
+
 
 ###目标：
 - 了解Spring-MVC的流程

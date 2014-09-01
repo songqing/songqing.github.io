@@ -5,7 +5,7 @@ date: 2014/06/27 9:21:52
 title: Lucence对索引进行增删改查
 tags : [lucence]
 ---
-{% include JB/setup %}
+
 
 ###Filed.index(索引选项)
 - Index.ANALYZED：进行分词和索引，适用用于标题和内容

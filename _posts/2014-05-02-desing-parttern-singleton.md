@@ -5,7 +5,7 @@ date: 2014/05/02 00:56:52
 title: 设计模式之单例模式
 tags : Design_pattern
 ---
-{% include JB/setup %}
+
 
 ###概述
 

@@ -5,7 +5,7 @@ date: 2014/06/03 01:00:00
 title: Activity生命周期
 tags : Android
 ---
-{% include JB/setup %}
+
 
 ###概述
 Activity生命周期就是一个Activity从开始到结束的全部过程，期间还有有暂停和重新开始等

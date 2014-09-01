@@ -5,7 +5,7 @@ date: 2014/06/02 08:00:52
 title: 安卓抽屉布局
 tags : Android
 ---
-{% include JB/setup %}
+
 
 ##提示，下面的在页面会显示错误。应该是插件自动补全的原因
 
