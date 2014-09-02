@@ -40,14 +40,13 @@ $$M_{max} = \frac{3n(n-1)}{2} = O(n^2)$$
 
 ###算法描述
 
-<pre class="brush: java;">
 
 package cn.liuyiyou.sort;
 
 /**
  * 每一趟从待排序的数据元素中选出最小（或最大）的一个元素，顺序放在已排好序的数列的最后，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法。
  * User: liuyiyou
- * Date: 14-8-21
+ * Date: 13-1-1
  * Time: 下午5:28
  */
 public class SelectSort {
@@ -101,5 +100,3 @@ public class SelectSort {
     }
 }
 
-
-</pre>

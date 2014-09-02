@@ -24,8 +24,6 @@ tags : Android
 ###实例
 使用线性布局(LinearLayout)来显示一个登录框
 
-<pre class="brush: xml;">
-
 
 <!--最外面的布局是垂直布局，里面的小LinerLayout是默认的水平布局-->
 <?xml version="1.0" encoding="utf-8"?>
@@ -88,7 +86,6 @@ tags : Android
    
 </LinearLayout>
 
-</pre>
 
 ###单帧布局(FrameLayout)
 

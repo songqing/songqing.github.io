@@ -23,7 +23,7 @@ tags : Design_pattern
 
 第一种：饿汉式：在类初始化时，已经自行实例化
 
-<pre class="brush: java;">
+{% highlight java %}
 
     public class Singleton1 {
 
@@ -38,7 +38,7 @@ tags : Design_pattern
     private Singleton1() {
     }
 }
-</pre>
+{% endhighlight %}
 
 第二种：懒汉式：在需要实例化的时候才进行实例化，有线程同步和序列化问题
 
@@ -47,7 +47,7 @@ tags : Design_pattern
 一个类或者程序所提供的接口对于线程来说是原子操作或者多个线程之间的切换不会导致该接口的执行结果存在二义性
 ,也就是说我们不用考虑同步的问题。显然以上实现并不满足线程安全的要求，在并发环境下很可能出现多个Singleton实例。
 
-<pre class="brush: java;">
+{% highlight java %}
 
     public class Singleton {
 
@@ -63,22 +63,25 @@ tags : Design_pattern
         return singleton;
     }
 }
-</pre>
+
+{% endhighlight %}
 
 第三种：使用枚举类，可以解决多线程问题，这是efftive java中的一个实现方式
 
-<pre class="brush: java;">
+{% highlight java %}
+
     
     public enum Singleton6 {
     
     INSTANCE;
 }
-</pre>
+{% endhighlight %}
 
 第四种：登记式单例类.将类名注册，下次从里面直接获取
 
 
-<pre class="brush: java;">
+{% highlight java %}
+
     public class Singleton3 {
     private static Map<String, Singleton3> map = new HashMap<String, Singleton3>();
     static {
@@ -120,7 +123,8 @@ tags : Design_pattern
         System.out.println(single3.about());
     }
 }
-</pre>
+
+{% endhighlight %}
 
 ###优点
 

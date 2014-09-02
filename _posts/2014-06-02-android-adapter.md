@@ -19,11 +19,6 @@ tags : Android
 2. ActionBar
 3. 
 
-<pre class="brush: xml;">
-
-
-
-</pre>
 
 
 

@@ -47,7 +47,7 @@ package cn.liuyiyou.sort;
 /**
  * 冒泡排序：
  * User: liuyiyou
- * Date: 14-8-21
+ * Date: 13-1-1
  * Time: 下午4:04
  */
 public class BubbleSort {
@@ -117,5 +117,3 @@ public class BubbleSort {
     }
 
 }
-
-
