@@ -14,7 +14,9 @@ tags : [lucence]
 4. 为Document添加Field(表的字段)
 5. 通过IndexWriter添加文档到索引中
 
-<pre class="brush: java;">
+
+{% highlight java %}
+
      /**
      * 建立索引
      * 
@@ -76,7 +78,7 @@ tags : [lucence]
         }
     }
 
-</pre>
+{% endhighlight %}
 
 ###索引搜索步骤
 1. 创建Directory
@@ -87,7 +89,7 @@ tags : [lucence]
 6. 根据TopDocs获取ScoreDoc对象
 7. 根据Searcher得到搜索文档
 
-<pre class="brush: java;">
+{% highlight java %}
 
     /**
      * 搜索索引
@@ -140,10 +142,10 @@ tags : [lucence]
         }
     }
 
-</pre>
+{% endhighlight %}
 
 ###测试类
-<pre class="brush: java;">
+{% highlight java %}
 
 /**
  * 测试类
@@ -160,7 +162,8 @@ public class TestLucene {
         hl.searcher();
     }
 }
-</pre>
+
+{% endhighlight %}
 
 
 ###注意：

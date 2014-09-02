@@ -200,16 +200,17 @@ BinderResult接口扩展了Erros接口，以便可以使用Spring的Validator对
 2.1.1使用之前的配置，不做任何修改,messages里面没有任何对应的errorcode
 
 
-<pre class="brush: java;">
+{% highlight java %}
 @NotEmpty
-</pre>
+{% endhighlight %}
+
 起作用了，提示：may not be empty ，为什么会显示这个会有解释
 
 
-<pre class="brush: java;">
+{% highlight java %}
 
 @NotEmpty(message = "{username.not.empty}")
-</pre>
+{% endhighlight %}
 提示：{username.not.empty}
 
 不起作用的原因是：NotNull和NotEmpty是不同滴。
@@ -244,7 +245,7 @@ NotEmpty.user.username=用户名不能为空
 
 2.1.4：加上以上配置之后
 
-{% highlight java %}
+{% highlight xml %}
 
 <!-- 以下 validator  ConversionService 在使用 mvc:annotation-driven 会 自动注册-->
     <bean id="validator"
@@ -274,9 +275,9 @@ NotEmpty.user.username=用户名不能为空
 
 
 
-将<mvc:annotation-driven validator="validator" />
+将<code><mvc:annotation-driven validator="validator" /></code>
 
-    @NotEmpty 提示用户名不能为空
+@NotEmpty 提示用户名不能为空
 
 @NotEmpty(message = "{username.not.empty}")提示用户名不能为空，即messages仍然没有起作用
 
@@ -284,7 +285,8 @@ NotEmpty.user.username=用户名不能为空
 
 总结：因为不知道为什么基于javax.validator的注解不起作用，所以字总结基于hibernate的注解。这里一NotEmpty来举例。
 首先，如果一旦在实体上标识了该注解，则就已经起作用了。如果不配置错误信息，将使用默认的：在hibernate-validator.jar中的Resource中，有一个ValidatorMessages.properties。里面有错误主力的默认显示：org.hibernate.validator.constraints.NotEmpty.message=may not be empty，这也就是为什么只配置了@NotEmpty之后显示 may not be empty的原因。当配置了自己的资源文件后，因为没有配置validator，所以还是显示之前的错误。那为什么后面没有配置validator。为什么NotEmpty.user.usrname能显示而{username.not.empty}不能正常显示呢？这是因为FileError实现了MessageResourceResolvable接口，里面有自己的一套规则：
-Annotation.entity.attribute。所以，我使用NotEmpty.user.username能显示中文，而使用{usrname.not.empty}却显示{username.not.empty}。在配置了validator之后，因为<mvc:annotaitonDriver 中没有指定validator，所以相当于没有配置。即：2.1.3的测试结果和2.1.4的测试结果一样。只有配置了 mvc:annotaiton-driver validator=“validator”之后，才能自定义错误格式，这种情况下才@NotEmpty{message={username.not.empty}}才能显示出来，不过NotEmpty.user.username这样格式的优先级比较高，两者放在一起，还是会显示后者。这就是，为什么在所有的一切都配置好之后，还是会显示“用户名不能为空”，只有在messages里面去掉之后才能显示username.not.empty的信息。
+Annotation.entity.attribute。所以，我使用NotEmpty.user.username能显示中文，而使用{usrname.not.empty}却显示{username.not.empty}。在配置了validator之后，因为
+<code><mvc:annotaitonDriver/></code> 中没有指定validator，所以相当于没有配置。即：2.1.3的测试结果和2.1.4的测试结果一样。只有配置了 mvc:annotaiton-driver validator=“validator”之后，才能自定义错误格式，这种情况下才@NotEmpty{message={username.not.empty}}才能显示出来，不过NotEmpty.user.username这样格式的优先级比较高，两者放在一起，还是会显示后者。这就是，为什么在所有的一切都配置好之后，还是会显示“用户名不能为空”，只有在messages里面去掉之后才能显示username.not.empty的信息。
 
 
 

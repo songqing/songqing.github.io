@@ -23,7 +23,7 @@ Activity生命周期就是一个Activity从开始到结束的全部过程，期�
 
 ###Activity生命周期流程图：
 
-![Alt text]({{ BASE_PATH }}/assets/images/activity_lifecycle.png "Activity生命周期")
+![Alt text]({{ BASE_PATH }}/images/activity_lifecycle.png "Activity生命周期")
 
 ###Activity生命周期描述
 
@@ -41,7 +41,7 @@ Activity生命周期就是一个Activity从开始到结束的全部过程，期�
 
 7. 用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。
 
-<pre class="brush: java;">
+{% highlight java %}
 
 package cn.liuyiyou.android.activity;
 
@@ -134,13 +134,7 @@ public class LifecycleActivity extends Activity {
     }
 
 }
-
-
-</pre>
-
-
-
-
+{% endhighlight %}
 
 
 

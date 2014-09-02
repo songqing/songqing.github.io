@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "macbook air彻底删除文件以及dea关于属性文件中文乱码"
+title:  "macbook air彻底删除文件以及idea关于属性文件中文乱码"
 date:   2014/07/26 19:23:14 
 category: tools
 tag: tools

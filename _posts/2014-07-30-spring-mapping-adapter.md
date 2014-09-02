@@ -27,6 +27,7 @@ tags : spring
 在web.xml中配置DispatchServlet
 
 {% highlight xml %}    
+
         <servlet>
             <servlet-name>dispatcher</servlet-name>
             <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
