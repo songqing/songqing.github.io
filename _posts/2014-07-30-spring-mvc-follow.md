@@ -30,7 +30,7 @@ tags : spring
 返回授权给DispatchServlet, 由DispatchServlet返回给响应用户。
 
 ##流程图
-![Alt text]({{ BASE_PATH }}/assets/images/spring-mvc.png "SpringMVC流程")
+![Alt text]({{ BASE_PATH }}/images/spring-mvc.png "SpringMVC流程")
 
 
 
@@ -82,7 +82,7 @@ DispatcherServlet默认使用WebApplicationContext作为上下文，因此我们
 
 在web.xml中：
 
-<pre class="brush: xml;">
+{% highlight xml %}
 
         <servlet>
             <servlet-name>dispatcher</servlet-name>
@@ -98,34 +98,38 @@ DispatcherServlet默认使用WebApplicationContext作为上下文，因此我们
             <url-pattern>/</url-pattern>
         </servlet-mapping>
 
-</pre>
+{% endhighlight %}
 
 在spring-web.xml中：
 
-<pre class="brush: xml;">
+{% highlight xml %}
 
-<bean name="/test" class="cn.liuyiyou.spring.simple.web.ControllerTest"></bean>
-</pre>
+    <bean name="/test" class="cn.liuyiyou.spring.simple.web.ControllerTest"></bean>
+
+{% endhighlight %}
+
 因为默认的映射器是BeanNameUrlHandlerMapping。该类会查找和请求同名的bean处理器.所以需要配置一个bean name为test的处理器。
 
 
 
 在处理器中：
 
-<pre class="brush: java;">
+{% highlight java %}
 
-public class ControllerTest implements Controller {
+    public class ControllerTest implements Controller {
 
-    @Override
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        @Override
+        public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("test.jsp");
-        return mv;
+            ModelAndView mv = new ModelAndView();
+            mv.setViewName("test.jsp");
+            return mv;
+        }
     }
-}
-</pre>
+
+{% endhighlight %}
+
 
 默认使用的InternalResourceViewResolver会将逻辑视图名解析为具体的视图。该类使用的是jsp视图。默认情况下前缀是webapp。后缀没有。所以mv.setViewName(“test.jsp”),对应的视图是webapp/test.jsp。
 

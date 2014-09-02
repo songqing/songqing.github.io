@@ -26,7 +26,7 @@ tags : spring
 ###配置如下
 在web.xml中配置DispatchServlet
 
-<pre class="brush: xml;">
+{% highlight xml %}    
         <servlet>
             <servlet-name>dispatcher</servlet-name>
             <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -41,11 +41,12 @@ tags : spring
             <url-pattern>/</url-pattern>
         </servlet-mapping>
 
-</pre>
+{% endhighlight %}
 
 处理器或者控制器：
 
-<pre class="brush: java;">
+{% highlight java %}    
+
     public class ControllerTest implements Controller {
 
     @Override
@@ -58,43 +59,51 @@ tags : spring
         return mv;
     }
 }
-</pre>
+
+{% endhighlight %}
 
 spring-web.xml
 
-<pre class="brush: xml;">
+{% highlight xml %}    
+
     <bean name="/test" class="cn.liuyiyou.spring.simple.web.ControllerTest"></bean>
-</pre>
+
+{% endhighlight %}
 
 这样的情况下，访问/simple/test即可访问。因为默认使用了BeanNameUrlMapping和SimpleControllerAdpter。所以配置了：
 
-<pre class="brush: xml;">
+{% highlight xml %}    
+
     <bean name="/test" class="cn.liuyiyou.spring.simple.web.ControllerTest"></bean>
-</pre>
+
+{% endhighlight %}
+
 的时候，当访问一个/test时，会映射到处理器  ControllerTest。而SimpleControlerAdapter则会适配实现了Controller接口的类，并使用其中的handleRequest方法来处理业务逻辑
 
 来做一个实验，之前在使用注解的时候都是使用
 
-<pre class="brush: xml;">
+{% highlight xml %}    
     <mvc-annotation-driver />
-</pre>
+{% endhighlight %}
 
 来实现，而且在控制器中需要在类上使用@Controller并且在方法中使用@RequestMapping。
 
 我们不这样使用，而是使用BeanNameUrlMapping和AnnotationMethodHandlerAdapter这种奇葩的组合方式。
 
-<pre class="brush: xml;">
-<bean name="/test2" class="cn.liuyiyou.spring.simple.web.ControllerTest2"></bean>
+{% highlight xml %}    
 
-<bean name="/test3" class="cn.liuyiyou.spring.simple.web.ControllerTest2"></bean>
+    <bean name="/test2" class="cn.liuyiyou.spring.simple.web.ControllerTest2"></bean>
 
-</pre>
+    <bean name="/test3" class="cn.liuyiyou.spring.simple.web.ControllerTest2"></bean>
+
+{% endhighlight %}
 
 并没有使用@Controller注解
 
-<pre class="brush: java;">
+{% highlight java %}    
 
-    //并没有使用@Controller注解
+
+//并没有使用@Controller注解
 public class ControllerTest2 {
 
 @RequestMapping(value = "/test2")
@@ -109,7 +118,7 @@ return "test3.jsp";
 }
 }
 
-</pre>
+{% endhighlight %}
 
 debug：
 

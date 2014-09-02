@@ -35,7 +35,7 @@ public class User {
 1.2:定义实体类验证类（UserValidator）
 需要继承Validator接口
 
-<pre class="brush: java;">
+{% highlight java %}
 
 public class UserValidator implements Validator {
 
@@ -68,13 +68,13 @@ public void validate(Object target, Errors errors) {
         }
 
 }
-</pre>
+{% endhighlight %}
 
 
 1.3：编写控制器代码：
 
 
-<pre class="brush: java;">
+{% highlight java %}
 
  @RequestMapping(value = "validatorBySpring", method = RequestMethod.GET)
     public String validatorBySpringForm(@ModelAttribute("user") User user) {
@@ -95,26 +95,26 @@ public void validate(Object target, Errors errors) {
         return "validator/success";
     }
 
-</pre>
+{% endhighlight %}
 
 注意：在get方法中，需要加上@ModelAttribute，否则无法访问，或者可以抽出来，写一个以下方法：
 
 
-<pre class="brush: java;">
+{% highlight java %}
 
 @ModelAttribute(“user")
 public　void　getUser(){
      return new User();
 }
 
-</pre>
+{% endhighlight %}
 这样的话，访问该控制器的时候都会调用该方法
 
 
 1.4：前台
           
 
-<pre class="brush: java;">
+{% highlight html %}
 
            <form:form action="${ctx}/validator/validatorBySpring" method="post" modelAttribute="user">
                <tr>
@@ -142,13 +142,13 @@ public　void　getUser(){
 
            </form:form>
  
-</pre>
+{% endhighlight %}
       
 
 1.5: 在上述代码已经可以完成Spring自带验证了，而且界面能正常显示错误信息，但是在实际过程中，错误信息采用的是硬编码，这是不可取的，所以，接下来需要国际化错误信息
     
 
-<pre class="brush: xml;">
+{% highlight xml %}
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename">
@@ -156,7 +156,7 @@ public　void　getUser(){
         </property>
     </bean>
 
-</pre>
+{% endhighlight %}
 
 messages_zh_CN.properties 在resources/下
 empty.user.username=用户名不能为空
@@ -170,7 +170,7 @@ max.length.user.username=用户名长度不能大于6
 扩展：
 1：不使用rejectValue，而是使用reject，界面该如何显示
 eg:errors.reject(“empty.user.username”,”用户名不能为空");
-直接在form中写如下：<form:errors />会显示全部错误
+直接在form中写如下：<code><form:errors /></code>会显示全部错误
 
 2:使用ValidationUtils
 ValidationUtils.rejectIfEmpty(errors,"username","empty.user.username","用户名不能为空”);
@@ -181,8 +181,7 @@ ValidationUtils.rejectIfEmpty(errors,"username","empty.user.username","用户名
 
  Errors主要使用方法：
 
-<pre class="brush: java;">
-
+{% highlight java %}
 
 reject(String errorcode,Object[] errorArgs,String defaultMessage)
 
@@ -190,7 +189,8 @@ rejectValue(String filed,String errorcode,Object[] errorArgs,String defaultMessa
 
 BinderResult接口扩展了Erros接口，以便可以使用Spring的Validator对对象进行校验，同时获取绑定结果对象的信息。
 
-</pre>
+{% endhighlight %}
+
 二：使用基于jsr303的验证
 在Spring3.x企业开发实战里面提到：通过binder.setValidator之后，Spring MVC将使用它对入参对象进行校验，将不再使用Spring框架装配的Validator对入参进行校验。换句话说：即使在入参上标注了@Valid注解，也不会再根据入参对象类中的jsr303注解进行校验了。
 
@@ -244,7 +244,7 @@ NotEmpty.user.username=用户名不能为空
 
 2.1.4：加上以上配置之后
 
-<pre class="brush: xml;">
+{% highlight java %}
 
 <!-- 以下 validator  ConversionService 在使用 mvc:annotation-driven 会 自动注册-->
     <bean id="validator"
@@ -255,7 +255,7 @@ NotEmpty.user.username=用户名不能为空
     </bean>
 
 
-</pre>
+{% endhighlight %}
 
 
 资源文件还是如下：
