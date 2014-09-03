@@ -25,6 +25,8 @@ tags : Android
 使用线性布局(LinearLayout)来显示一个登录框
 
 
+{% highlight xml %}
+
 <!--最外面的布局是垂直布局，里面的小LinerLayout是默认的水平布局-->
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -86,6 +88,7 @@ tags : Android
    
 </LinearLayout>
 
+{% endhighlight %}
 
 ###单帧布局(FrameLayout)
 
@@ -93,8 +96,10 @@ tags : Android
 
 不过他提供了一个layout:gravity。里面有多个属性（top,bottom left ,right,center,），可以自由组合。可以比较好的组成一个九宫格的模式
 
+
 ###实例：
-<pre class="brush: xml;">
+
+{% highlight xml %}
 
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -185,14 +190,15 @@ tags : Android
 </FrameLayout>
 
 
-</pre>
+{% endhighlight %}
 
-###3. 绝对布局(AbsoluteLayout)
+###绝对布局(AbsoluteLayout)
 
 绝对布局(AbsoluteLayout)就是指定xy坐标进行布局，这种模式比较少用，因为现在安卓的各种屏幕大小以及各种分辨率的原因，使用该布局比较难以进行调试，不好进行适配,而且在安卓4.1中已经提示该布局已经过时了。
 
 ###实例
-<pre class="brush: xml;">
+{% highlight xml %}
+
 
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -226,8 +232,7 @@ tags : Android
         android:text="3"/>
 </AbsoluteLayout>
 
-</pre>
-
+{% endhighlight %}
 
 
 
@@ -254,7 +259,8 @@ tags : Android
 
 ###实例，中间一个，四方个一个
 
-<pre class="brush: xml;">
+{% highlight xml %}
+
 
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -292,8 +298,7 @@ tags : Android
         android:text="3" />
 </RelativeLayout>
 
-</pre>
-
+{% endhighlight %}
 
 ###表格布局(TableLayout)
 
@@ -303,7 +308,8 @@ TableLayout是LinerLayout的子类，它的android:orientation属性恒为horizo
 
 ###实例
 
-<pre class="brush: xml;">
+{% highlight xml %}
+
 
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -381,8 +387,7 @@ TableLayout是LinerLayout的子类，它的android:orientation属性恒为horizo
 
 </TableLayout>
 
-</pre>
-
+{% endhighlight %}
 
 
 
