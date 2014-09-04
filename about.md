@@ -5,7 +5,7 @@ description: "业余爱好的点滴记录，同时作为配置备份的存储地
 ---
 #### 二维码:
 
-![Alt text]({{ BASE_PATH }}/images/qq.jpg "Activity生命周期")
+![Alt text]({{ BASE_PATH }}/images/qq.jpg "liuyiyou的二维码")
 
 
 #### ChangeLog
