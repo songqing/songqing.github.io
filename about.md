@@ -5,7 +5,8 @@ description: "业余爱好的点滴记录，同时作为配置备份的存储地
 ---
 #### 二维码:
 
-![Blog QR Code](/style/img/url.png "Blog QR Code")
+![Alt text]({{ BASE_PATH }}/images/qq.jpg "Activity生命周期")
+
 
 #### ChangeLog
 
