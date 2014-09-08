@@ -41,6 +41,7 @@ $$M_{max} = \frac{3n(n-1)}{2} = O(n^2)$$
 
 ###算法描述
 
+{% highlight java %}
 
 package cn.liuyiyou.sort;
 
@@ -117,3 +118,5 @@ public class BubbleSort {
     }
 
 }
+
+{% endhighlight %}
