@@ -1,40 +1,53 @@
  <nav class="blog-nav">
     {% if page.url ==  "/archive.html" %}
-    <a class="blog-nav-item" href="/">Home</a>
-    <a class="blog-nav-item active" href="{{ '/archive.html' }}">Archive</a>
-    <a class="blog-nav-item" href="{{'/categories.html'}}">Category</a>
-    <a class="blog-nav-item" href="{{'/tags.html'}}">Tag</a>
-    <a class="blog-nav-item " href="{{'/about.html'}}">About</a>
+    <a class="blog-nav-item" href="/">首页</a>
+    <a class="blog-nav-item active" href="{{ '/archive.html' }}">归档</a>
+    <a class="blog-nav-item" href="{{'/categories.html'}}">类目</a>
+    <a class="blog-nav-item" href="{{'/tags.html'}}">标签</a>
+    <a class="blog-nav-item " href="{{'/books.html'}}">书单</a>
+    <a class="blog-nav-item " href="{{'/about.html'}}">关于我</a>
     {% elsif page.url ==  "/categories.html" %}
-    <a class="blog-nav-item" href="/">Home</a>
-    <a class="blog-nav-item" href="{{ '/archive.html' }}">Archive</a>
-    <a class="blog-nav-item active" href="{{'/categories.html'}}">Category</a>
-    <a class="blog-nav-item" href="{{'/tags.html'}}">Tag</a>
-    <a class="blog-nav-item " href="{{'/about.html'}}">About</a>
+    <a class="blog-nav-item" href="/">首页</a>
+    <a class="blog-nav-item" href="{{ '/archive.html' }}">归档</a>
+    <a class="blog-nav-item active" href="{{'/categories.html'}}">类目</a>
+    <a class="blog-nav-item" href="{{'/tags.html'}}">标签</a>
+    <a class="blog-nav-item " href="{{'/books.html'}}">书单</a>
+    <a class="blog-nav-item " href="{{'/about.html'}}">关于我</a>
     {% elsif page.url ==  "/tags.html" %}
-    <a class="blog-nav-item" href="/">Home</a>
-    <a class="blog-nav-item" href="{{ '/archive.html' }}">Archive</a>
-    <a class="blog-nav-item" href="{{'/categories.html'}}">Category</a>
-    <a class="blog-nav-item active" href="{{'/tags.html'}}">Tag</a>
-    <a class="blog-nav-item" href="{{'/about.html'}}">About</a>
+    <a class="blog-nav-item" href="/">首页</a>
+    <a class="blog-nav-item" href="{{ '/archive.html' }}">归档</a>
+    <a class="blog-nav-item" href="{{'/categories.html'}}">类目</a>
+    <a class="blog-nav-item active" href="{{'/tags.html'}}">标签</a>
+    <a class="blog-nav-item " href="{{'/books.html'}}">书单</a>
+    <a class="blog-nav-item" href="{{'/about.html'}}">关于我</a>
     {% elsif page.url ==  "/project.html" %}
-    <a class="blog-nav-item" href="/">Home</a>
-    <a class="blog-nav-item" href="{{ '/archive.html' }}">Archive</a>
-    <a class="blog-nav-item" href="{{'/categories.html'}}">Category</a>
-    <a class="blog-nav-item" href="{{'/tags.html'}}">Tag</a>
-    <a class="blog-nav-item" href="{{'/about.html'}}">About</a>
+    <a class="blog-nav-item" href="/">首页</a>
+    <a class="blog-nav-item" href="{{ '/archive.html' }}">归档</a>
+    <a class="blog-nav-item" href="{{'/categories.html'}}">类目</a>
+    <a class="blog-nav-item" href="{{'/tags.html'}}">标签</a>
+    <a class="blog-nav-item " href="{{'/books.html'}}">书单</a>
+    <a class="blog-nav-item" href="{{'/about.html'}}">关于我</a>
     {% elsif page.url ==  "/about.html" %}
-    <a class="blog-nav-item" href="/">Home</a>
-    <a class="blog-nav-item" href="{{ '/archive.html' }}">Archive</a>
-    <a class="blog-nav-item" href="{{'/categories.html'}}">Category</a>
-    <a class="blog-nav-item" href="{{'/tags.html'}}">Tag</a>
-    <a class="blog-nav-item active" href="{{'/about.html'}}">About</a>
+    <a class="blog-nav-item" href="/">首页</a>
+    <a class="blog-nav-item" href="{{ '/archive.html' }}">归档</a>
+    <a class="blog-nav-item" href="{{'/categories.html'}}">类目</a>
+    <a class="blog-nav-item" href="{{'/tags.html'}}">标签</a>
+    <a class="blog-nav-item " href="{{'/books.html'}}">书单</a>
+    <a class="blog-nav-item active" href="{{'/about.html'}}">关于我</a>
+    {% elsif page.url ==  "/books.html" %}
+    <a class="blog-nav-item" href="/">首页</a>
+    <a class="blog-nav-item" href="{{ '/archive.html' }}">归档</a>
+    <a class="blog-nav-item" href="{{'/categories.html'}}">类目</a>
+    <a class="blog-nav-item" href="{{'/tags.html'}}">标签</a>
+    <a class="blog-nav-item active" href="{{'/books.html'}}">书单</a>
+    <a class="blog-nav-item " href="{{'/about.html'}}">关于我</a>
     {% else %}
-    <a class="blog-nav-item active" href="/">Home</a>
-    <a class="blog-nav-item" href="{{ '/archive.html' }}">Archive</a>
-    <a class="blog-nav-item" href="{{'/categories.html'}}">Category</a>
-    <a class="blog-nav-item" href="{{'/tags.html'}}">Tag</a>
-    <a class="blog-nav-item" href="{{'/about.html'}}">About</a>
+    <a class="blog-nav-item active" href="/">首页</a>
+    <a class="blog-nav-item" href="{{ '/archive.html' }}">归档</a>
+    <a class="blog-nav-item" href="{{'/categories.html'}}">类目</a>
+    <a class="blog-nav-item" href="{{'/tags.html'}}">标签</a>
+    <a class="blog-nav-item " href="{{'/books.html'}}">书单</a>
+    <a class="blog-nav-item" href="{{'/about.html'}}">关于我</a>
     {% endif %}
 
 </nav>
