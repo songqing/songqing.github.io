@@ -6,7 +6,7 @@ category: webx
 tag: alibaba
 ---
 
-有时候没有耐心看完，先把总结写好：
+有时候没有耐心看完，先把总结写好：（总结只对应默认情况）
 
 - webx暂时还不支持rest方法，所以，访问的时候需要后缀，比如.htm .do .json
 
@@ -19,11 +19,11 @@ tag: alibaba
 - <code>http://localhost:8081/simple/response_object.htm?name=liuyiyou&password=123456&email=liuyiyou@yahoo.com</code>
 会提示找不到<code>/screen/simple/responseObject</code>模板
 
-- 不带后缀和后缀名为.htm得到的结果一样，但是.html则不一样，需要.html模板，而且模板名字和访问路径必须一样，webx不会像处理vm模板一样处理大小写
+- 不带后缀和后缀名为.htm得到的结果一样，但是.html则不一样，需要.html模板，而且模板名字和访问路径必须一样，webx不会像处理vm模板一样处理大小写（不一定，需要看pipeline.xml中的配置方式）
 
-- .do和.json基本没有什么区别
+- .do和.json基本没有什么区别（不一定，需要看pipeline.xml中的配置方式）
 
-- execute()方法可以带参数，但是不能随便带，<code>com.alibaba.citrus.turbine.dataresolve</code>包中注解的可以<code>Navigator</code>和 <code>Context</code>也可以
+- execute()方法可以带参数，但是不能随便带，<code>com.alibaba.citrus.turbine.dataresolve</code>包中注解的可以<code>Navigator</code>和 <code>Context</code>也可以（不一定，需要看webx-component-and-root.xml中的配置方式）
 
 - 一个moduel.scren可以处理多个请求，默认是<code>doPerform</code>,其他的已<code>doXXX</code>开头的都可以，里面的参数可以参考上面这条。 <code>beforeExecution</code> 和<code>afterExecution</code>看名字也知道是在executeion前后处理
 

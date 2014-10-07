@@ -1,0 +1,60 @@
+---
+title: 时光轴
+layout: page
+---
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        init();
+    });
+
+    function init() {
+        var pageSize = -1;
+        var url = "{{ BASE_PATH }}/js/app.json";
+        $.getJSON(url,function(data) {
+            pageSize = data.page;
+            renderData(pageSize);
+            if (pageSize>=1) {
+              nexePage(pageSize-1);
+            };
+        });
+
+    }
+
+    
+     function renderData(pageSize){
+       var url = "{{ BASE_PATH }}/js/contents" + pageSize + ".json";
+       $.getJSON(url,function(data) {
+            var times = '';
+            $.each(data,function(index, message) {
+               times += '<li>';
+               times += '<time class="cbp_tmtime"><span>' + message.date.day + '</span><span>' +message.date.time + '</span></time>';
+               times += '<div class="cbp_tmicon cbp_tmicon-screen"></div>';
+               times += '<div class="cbp_tmlabel">';
+               times += message.content;
+               times += '</div></li>';                
+           });
+            $("#timeline").append(times);
+
+        });    
+      
+    }
+
+
+
+    function nexePage(pageSize){
+       $("#next").click(function() {
+            initNode(pageSize);
+        });
+    }
+
+</script>
+
+<div class="blog-post">		
+   <ul id="timeline" class="cbp_tmtimeline">
+   </ul>
+<div id="showButton">
+   <input type="button" id="next" value="Next">
+</div>
+</div>
