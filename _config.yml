@@ -19,8 +19,8 @@ markdown: kramdown
 paginate: 10
 
 #url格式
-permalink: /:year/:month/:day/:title
-
+#permalink: /:year/:month/:day/:title
+permalink:  /posts/:title
 
 # comment
 comments:
