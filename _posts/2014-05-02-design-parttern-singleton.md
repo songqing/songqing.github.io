@@ -20,7 +20,6 @@ tags : Design_pattern
 ###使用方式：
 
 
-
 第一种：饿汉式：在类初始化时，已经自行实例化
 
 {% highlight java %}
@@ -39,6 +38,8 @@ tags : Design_pattern
     }
 }
 {% endhighlight %}
+
+
 
 第二种：懒汉式：在需要实例化的时候才进行实例化，有线程同步和序列化问题
 

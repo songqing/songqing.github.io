@@ -22,8 +22,6 @@ git是一个分布式代码管理工具，所以支持多个仓库，在git里�
 	git remote add origin https://github.com/liuyiyou/gittest.git    //ssh  :git@github.com:liuyiyou/gittest.git
 	git push -u origin master
 
-
-
 ###将一个本地仓库的代码提交到远程库
 1. 本地add
 	
@@ -32,6 +30,8 @@ git是一个分布式代码管理工具，所以支持多个仓库，在git里�
 3. 远程add //这步可能没有，因为已经存在了。
 
 4. push到远程仓库
+
+
 
 ###代码
 	git add .  // git add --all

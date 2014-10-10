@@ -19,11 +19,11 @@ Activity生命周期就是一个Activity从开始到结束的全部过程，期�
 
 4. Killed： 当Activity被系统杀死回收或者没有被启动时处于Killed状态。
 
-
-
 ###Activity生命周期流程图：
 
 ![Alt text]({{ BASE_PATH }}/images/activity_lifecycle.png "Activity生命周期")
+
+
 
 ###Activity生命周期描述
 

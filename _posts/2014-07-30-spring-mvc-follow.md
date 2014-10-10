@@ -16,7 +16,6 @@ tags : spring
 - 清晰的角色划分：前端控制器，请求到处理器映射，处理器适配器，视图解析器，处理器或者页面或者页面控制器，验证器，命令对象，表单对象
 - 分工明确，而且扩展点相当灵活
 
-
 ###Spring-MVC核心流程（doDispathch）
 - 用户发送请求到前度控制器DispatchServlet，前端控制器收到请求后不进行处理，而是委托给其他的解析器进行处理，作为统一访问点，进行全局流程控制
 
@@ -28,6 +27,8 @@ tags : spring
 
 - ModelAndView的逻辑视图名—》ViewResolver，ViewResolver将吧逻辑视图名解析为具体的View，View会根据传过来的的模型数据进行渲染，此处的Model实际是一个map结构。通过这种策略模式很容易支持其他视图技术。核心代码  render(mv, processRequest,response).
 返回授权给DispatchServlet, 由DispatchServlet返回给响应用户。
+
+
 
 ##流程图
 ![Alt text]({{ BASE_PATH }}/images/spring-mvc.png "SpringMVC流程")

@@ -14,9 +14,9 @@ tag: life
 
 对于地处内陆的人来说，大海是一个让人心向往的地方，这不是帝都几家一模一样的公园，小湖所能比拟的，所以听到说是去看海，心动了一下。
 
-
-
 回来后，买票，订旅馆十分钟完成，第二天便出发，到火车站的时候是晚上八点，本以为一个小地方的火车站应该修建得一般般的，结果发现出奇的大，也许是人流不够多的原因，发现感觉比北京站还大。
+
+
 
 出来举着小牌牌拉人住旅馆的人比旅游的人还多，在上车之前还觉得幸好订了旅馆，不然在中秋节这个旅游爆满的景点得睡大街，看到这样的结果发现我杞人忧天了。不过一个好处是不需要被拉客的当做东西来抢。所以我很有中国古代看客的心情下看到两个拉客的因抢一个女孩而大打出手的热闹之后，我心满意足的上了车。
 
@@ -38,10 +38,10 @@ tag: life
 
 所以，我会记得北戴河，会想念那里的日出！
 
-<img src="{{ BASE_PATH }}/images/beidaihe1.JPG" width="950" hight="970">
-<img src="{{ BASE_PATH }}/images/beidaihe2.JPG" width="950" hight="970">
-<img src="{{ BASE_PATH }}/images/beidaihe3.JPG" width="950" hight="970">
-<img src="{{ BASE_PATH }}/images/beidaihe4.JPG" width="950" hight="970">
+<img src="{{ BASE_PATH }}/images/beidaihe1.JPG" width="650" hight="970">
+<img src="{{ BASE_PATH }}/images/beidaihe2.JPG" width="650" hight="970">
+<img src="{{ BASE_PATH }}/images/beidaihe3.JPG" width="650" hight="970">
+<img src="{{ BASE_PATH }}/images/beidaihe4.JPG" width="650" hight="970">
 
 
 

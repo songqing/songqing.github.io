@@ -15,6 +15,7 @@ tags : [lucence]
 5. 通过IndexWriter添加文档到索引中
 
 
+
 {% highlight java %}
 
      /**

@@ -35,6 +35,8 @@ Spring支持Bean Validation1.0(JSR-303)和Bean Validation1.1(JSR-349)，为了�
 
 {% endhighlight %}
 
+
+
 使用这种方式，需要一个实现了jsr303的库，比如Hibernate Validator。这样你可以在控制器中，这样写：
 
 

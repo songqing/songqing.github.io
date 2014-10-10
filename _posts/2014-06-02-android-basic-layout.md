@@ -25,6 +25,8 @@ tags : Android
 使用线性布局(LinearLayout)来显示一个登录框
 
 
+
+
 {% highlight xml %}
 
 <!--最外面的布局是垂直布局，里面的小LinerLayout是默认的水平布局-->

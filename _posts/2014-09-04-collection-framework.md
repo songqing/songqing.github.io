@@ -10,9 +10,10 @@ java自带的集合是一个常用数据结构的集合，也是在平常用得�
 
 集合框架主要的类和接口如下图所示（来自于百度百科）：
 
+<img src="{{ BASE_PATH }}/images/java-collction-framework.jpg" width="650" hight="970">
 
 
-![Alt text]({{ BASE_PATH }}/images/java-collction-framework.jpg "java集合框架图")
+
 
 从上面的图可以看出，主要是两个接口，一个Collection接口和一个Map接口，所以不要把Collection和Collections搞混，也不要把集合框架记混，只要记住Map和Collection完全没有联系即可。
 
@@ -68,6 +69,7 @@ JDK并没有提供直接实现这个接口的类。而是提供了子接口，�
 > 此接口是 Java Collections Framework 的一个成员。
 
 主要方法：
+
 
 {% highlight java %}
 

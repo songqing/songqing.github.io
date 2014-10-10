@@ -22,9 +22,10 @@ tags : spring
 
 其中，HandlerMapping,HandlerAdapter,ViewResolver都使用默认的实现，刚开始，我们不配置，来看看默认实现
 
-
 ###配置如下
 在web.xml中配置DispatchServlet
+
+
 
 {% highlight xml %}    
 

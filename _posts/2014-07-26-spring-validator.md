@@ -35,6 +35,8 @@ public class User {
 1.2:定义实体类验证类（UserValidator）
 需要继承Validator接口
 
+
+
 {% highlight java %}
 
 public class UserValidator implements Validator {

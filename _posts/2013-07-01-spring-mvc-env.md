@@ -18,7 +18,10 @@ tag: Spring mvc
 
 步骤：
     1：使用slf4j和log4j替代common-logging
-            1.1：在pom.xml中，加入相应的包，
+            1.1：在pom.xml中，加入相应的包
+
+
+            
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
