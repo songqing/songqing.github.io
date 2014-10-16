@@ -16,7 +16,7 @@ excerpt_separator: "\n\n\n"
 markdown: kramdown
 
 #分页
-paginate: 10
+paginate: 5
 
 #url格式
 #permalink: /:year/:month/:day/:title
