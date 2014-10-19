@@ -18,8 +18,7 @@ title: 首页
    {% else %}
                 <hr>
             {% endif %}
-    
-  <p class="blog-post-meta">日期：{{ post.date |date_to_string}}|分类： {{ post.category }}</p>
+  <p class="blog-post-meta">日期：{{ post.date |date: "%Y-%m-%d"}}|分类： {{ post.category }}</p>
 
   
 </div><!-- /.blog-post -->
