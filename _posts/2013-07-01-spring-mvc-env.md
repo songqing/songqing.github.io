@@ -6,22 +6,149 @@ category: Spring
 tag: Spring mvc
 ---
 
-##说明
+###说明
 
 之前是放在有道云笔记上的，不过经过我的反复折腾，不断的在有道和未知笔记上换来换去，删删改改，在今天搭建Velocity环境的适合发现竟然找不到了，所以，干脆写一篇放在博客上，同时在有道云笔记上方一个副本，因为没有用未知笔记了（Mac上有点不给力，当然有道也不给力，连清单待办事项都没有）
 
+###目的
+
+1. Spring mvc 的最简依赖设置
+
+2. Spring MVC增加日志
+
+3. rest风格以及静态文件的处理
+
+4. 使用velocity视图
+
+5. 配置事务
+
+
+按照上述步骤，可以完成目标。不过有一个问题，就是在配置log4j的监听器和文件位置的时候发现不能使用快捷键进行格式化。但是之前ContextLoadListener的时候却可以。
+    到目前为止，可以自定义配置文件的名称以及存放位置。定义了字符集，用来解决一般的乱码问题。可以使用junit和Spring-test进行单元测试。
+
+接下来，这是解决静态资源
+
 之前写了5篇，现在综合成一篇，可能会有点长，对应的代码可能放在github上（mySpring或者SpringMvc项目上）
 
-##最简单的环境
+###最简单的环境
 
-##日志环境
+###前提：
+1. 全部使用spring默认设置
 
-步骤：
-    1：使用slf4j和log4j替代common-logging
-            1.1：在pom.xml中，加入相应的包
+###环境：
+- idea
+- tomcat
+- Maven  
+
+###目标：
+- 运行的时候不报错即可
 
 
-            
+```pom.xml```
+
+{% highlight xml %}
+
+  <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+
+{% endhighlight %}
+
+
+```web.xml```
+
+{% highlight xml %}
+
+ <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+{% endhighlight %}
+
+```dispatcher-servlet```
+
+{% highlight xml %}
+
+  <!-- 里面不需要写什么 -->
+
+{% endhighlight %}
+
+
+这是最简单Spring mvc配置。其中的依赖Maven会自动依赖。查看包的时候，可以看到以下包已经被包含进去,只是这个只能说明配置成功，基本上只能保证运行的时候不报错
+
+
+###目标：
+1. 可以运行Springmvc程序
+
+```pom.xml```：因为在控制器中需要用servlet
+
+{% highlight xml %}
+
+       <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+{% endhighlight %}
+
+
+```dispatcher-servlet```
+
+{% highlight xml %}
+
+  <bean name="/user.do" class="TestController" />
+
+{% endhighlight %}
+
+```TestController```
+
+{% highlight java %}
+
+public class TestController  implements Controller {
+
+
+    @Override
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mv = new ModelAndView("user.jsp");
+        ModelMap modelMap = new ModelMap();
+        modelMap.put("message","this is message");
+        mv.addAllObjects(modelMap);
+        return mv;
+    }
+}
+
+{% endhighlight %}
+
+```user.jsp```在webapp下，不是在WEB-INF下
+
+{% highlight html %}
+
+ <html>
+ <body>
+ ${message}
+ </body>
+ </html>
+
+{% endhighlight %}
+
+
+2. 使用slf4j和log4j替代common-logging
+
+```pom.xml```
+
+{% highlight xml %}
+
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -45,7 +172,19 @@ tag: Spring mvc
             <version>1.2.16</version>
             <scope>runtime</scope>
         </dependency>
-                1.2：并将common-logging排除。主要是在spring-context中。
+
+
+      {% endhighlight %}
+               
+
+  - 并将common-logging排除。主要是在spring-context中。
+
+
+```pom.xml```
+
+{% highlight xml %}
+
+
        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -59,24 +198,54 @@ tag: Spring mvc
                 </exclusion>
             </exclusions>
         </dependency>
-               1.3：在web.xml中，加入log4j的Listener
+
+
+{% endhighlight %}
+        
+
+- 在```web.xml```中，加入```log4j```的```Listener```
+
+
+{% highlight xml %}
+
+
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
+
+
+{% endhighlight %}
+
         
-    2：自定义配置文件的存放位置
-          Spring配置文件applicationContext.xml和dispatch-servlet.xml默认都是放在WEB-INF下面。而且文件名都有一定限制不能修改。如果想自定义文件名和文件位置，则需要做如下配置：
-        2.1：自定义applicatonContext.xml存放位置：
+- 2：自定义配置文件的存放位置
+
+ Spring配置文件applicationContext.xml和dispatch-servlet.xml默认都是放在WEB-INF下面。而且文件名都有一定限制不能修改。如果想自定义文件名和文件位置，则需要做如下配置：
+       
+
+- 2.1：自定义applicatonContext.xml存放位置：
         在web.xml中：
+
+{% highlight xml %}
+
+
             <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:applicationContext*.xml
         </param-value>
     </context-param>
-        2.2：自定义dispatchservlet.xml存放位置：
+
+{% endhighlight %}
+
+
+- 2.2：自定义dispatchservlet.xml存放位置：
+
         在web.xml中：
-        <servlet>
+
+
+{% highlight xml %}
+
+ <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
@@ -85,15 +254,30 @@ tag: Spring mvc
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-        2.3：自定义log4j.properties存放位置：
+
+{% endhighlight %}
+
+
+- 2.3：自定义log4j.properties存放位置：
         在web.xml中：
+
+{% highlight xml %}
+
     <context-param>  
           <param-name>log4jConfigLocation</param-name>  
            <param-value>classpath:log4j.properties</param-value>  
     </context-param> 
-                
-    3：项目默认字符集设置-即在request请求中，默认使用utf-8接收字符串参数的值
+
+
+ {% endhighlight %}          
+
+
+- 3：项目默认字符集设置-即在request请求中，默认使用utf-8接收字符串参数的值
         在web.xml中：
+    
+{% highlight xml %}
+    
+
         <filter>
         <filter-name>characterEncodingFilter</filter-name>
        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -111,17 +295,31 @@ tag: Spring mvc
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    4：加入单元测试以及Spring测试
-        4.1:加入单元测试：
-            在pom.xml中：
+ {% endhighlight %}   
+
+
+- 4：加入单元测试以及Spring测试
+        
+- 4.1:加入单元测试：在pom.xml中：
+  
+{% highlight xml %}
+         
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.7</version>
             <scope>test</scope>
         </dependency>
+
+{% endhighlight %} 
+
+
+
     4.2:加入Spring测试：
         在pom.xml中：
+
+{% highlight xml %}
+    
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -129,65 +327,19 @@ tag: Spring mvc
             <scope>test</scope>
         </dependency>
 
-
-
-不包含任何内容，只是单纯的一个Spring –mvc 程序。则只需要在pom.xml中配置如下即可：
-
-还需要配置仓库。本地活在私服活在公共库都行。
-
-<dependency>
-
-        <groupId>org.springframework</groupId>
-
-        <artifactId>spring-webmvc</artifactId>
-
-        <version>${spring.version}</version>
-
-        <type>jar</type>
-
-        <scope>compile</scope>
-
-      </dependency>
-
- 
-
-<build>
-
-      <plugins>
-
-        <plugin>
-
-           <groupId>org.mortbay.jetty</groupId>
-
-           <artifactId>maven-jetty-plugin</artifactId>
-
-           <version>6.1.10</version>
-
-        </plugin>
-
-      </plugins>
-
-      <finalName>springmvc</finalName>
-
-   </build>
-
- 
-
-这样的情况下，启动jetty:run。即可访问。
-
-这是最简单Spring mvc配置。其中的依赖Maven会自动依赖。查看包的时候，可以看到以下包已经被包含进去：
+         {% endhighlight %} 
 
 
 
-其中commons-pool.jar 和commons-dbcp是没有的。
 
- 
 
 如果要使用json-lib 。
 
 则需要在spring-servlet.xml中配置
 
-<!-- 需要json-lib支持 <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+{% highlight xml %}
+
+ <!-- 需要json-lib支持 <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 
       <property name="messageConverters"> <list> <bean class="org.springframework.http.converter.StringHttpMessageConverter">
 
@@ -201,9 +353,13 @@ tag: Spring mvc
 
       /> -->
 
+{% endhighlight %} 
+
 集成hibernate验证的时候，加入
 
-<!-- JSR 303 with Hibernate Validator -->
+{% highlight xml %}
+
+ <!-- JSR 303 with Hibernate Validator -->
 
       <dependency>
 
@@ -225,7 +381,7 @@ tag: Spring mvc
 
       </dependency>
 
- 
+ {% endhighlight %} 
 
 之后，除了加入这两个包之外，还会加入slf4j-api.jar。因为hibernate使用的是这个日志框架。其中javax.validation的validation-api.jar是一个api。而hibernate-validator是这个api的实现。
 
@@ -233,7 +389,9 @@ tag: Spring mvc
 
 完全方式：
 
-<dependency>
+{% highlight xml %}
+
+ <dependency>
 
         <groupId>org.slf4j</groupId>
 
@@ -280,14 +438,15 @@ tag: Spring mvc
       </dependency>
 
  
+ {% endhighlight %} 
 
 当然也可以用简写方式，让Maven自动添加
 
-<!-- Logging -->
+{% highlight xml %}
 
-     
+ <!-- Logging -->
 
-      <dependency>
+     <dependency>
 
         <groupId>org.slf4j</groupId>
 
@@ -299,6 +458,7 @@ tag: Spring mvc
 
       </dependency>
 
+ {% endhighlight %} 
      
 
 加入日志框架之后，则会发现，控制台显示的方式比之前好看多了。
@@ -311,63 +471,378 @@ tag: Spring mvc
 
  
 
-      一直以来，以为Spring3.0的版本和3.1的版本差别不大，但是今天在练习Spring MVC的时候发现一个问题：即3.0.5和3.1的Spring mvc有区别。
-
-      在3.0.5中，如果在控制器中的@RequestMapping()中不显示声明映射地址，AbstractUrlHandlerMapping进行处理。
-
-    
-
-2013-06-12 00:10:31,913  INFO [main] (AbstractUrlHandlerMapping.java:411) - Mapped URL path [/account] onto handler 'accountController'
-
-2013-06-12 00:10:31,914  INFO [main] (AbstractUrlHandlerMapping.java:411) - Mapped URL path [/account.*] onto handler 'accountController'
-
-2013-06-12 00:10:31,914  INFO [main] (AbstractUrlHandlerMapping.java:411) - Mapped URL path [/account/] onto handler 'accountController'
-
- 
-
-     而在3.1中。则是使用AbstractHandlerMethodMapping进行处理
-
-2013-06-12 00:12:39,953  INFO [main] (AbstractHandlerMethodMapping.java:186) - Mapped "{[/account],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String cn.lyy.controller.AccountController.create(cn.lyy.domain.Account,org.springframework.validation.BindingResult)
-
-2013-06-12 00:12:39,954  INFO [main] (AbstractHandlerMethodMapping.java:186) - Mapped "{[/account/{id}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String cn.lyy.controller.AccountController.getView(java.lang.Long,org.springframework.ui.Model)
-
-2013-06-12 00:12:39,954  INFO [main] (AbstractHandlerMethodMapping.java:186) - Mapped "{[/account],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String cn.lyy.controller.AccountController.getCreateForm(org.springframework.ui.Model)
-
-2013-06-12 00:12:39,955  INFO [main] (AbstractHandlerMethodMapping.java:186) - Mapped "{[/test.htm],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String cn.lyy.controller.MyController.test()
-
- 
-
 注意Spring的版本和控制器。
 
+
+###总的pom.xml：
  
 
-学到的东西：
+{% highlight xml %}
 
-1：Spring mvc 的最简依赖设置。具体可参考pom.xml。其实也不是最简。因为加入了验证。
 
-2：validator验证以及显示。
+ <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.springframework-version>3.2.0.RELEASE</org.springframework-version>
+        <org.slf4j-version>1.5.10</org.slf4j-version>
+        <org.aspectj-version>1.6.8</org.aspectj-version>
+        <org.mybatis.pagination.version>0.0.3</org.mybatis.pagination.version>
+        <commons.lang3.version>3.1</commons.lang3.version>
+        <sitemesh.version>2.4.2</sitemesh.version>
+    </properties>
 
-3：java.util.concurrent.atomic.AtomicLong
+    <dependencies>
 
-这个以前没使用过。
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>15.0</version>
+        </dependency>
 
-4：国际化
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework-version}</version>
+            <exclusions>
+                <!-- Exclude Commons Logging in favor of SLF4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-5：Spring 表单验证。
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${org.slf4j-version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${org.slf4j-version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.18</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <!-- 增加这个包，则会自动引入commons-pool -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+
+        <!-- 增加这个包，则会自动引入spring-jdbc,spring-web,spring-tx -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${org.springframework-version}</version>
+            <type>jar</type>
+        </dependency>
+
+
+<!--velocity 需要这个的支持-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org.springframework-version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${org.aspectj-version}</version>
+        </dependency>
+
+
+        <!-- JSR 303 with Hibernate Validator -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>4.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.4</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.0.2.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.7</version>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>0.2.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.18</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.3</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.3</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.2</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>3.5.0</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-highlighter</artifactId>
+            <version>3.5.0</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.2.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.databinder.dispatch</groupId>
+            <artifactId>jsoup_2.8.1</artifactId>
+            <version>0.9.1</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- jpa start -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.0.0.Final</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.0.0.Final</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <!-- jpa end -->
+
+
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>2.10.1</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20080701</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <!-- sitemesh -->
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>${sitemesh.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+        </dependency>
+
+
+       <dependency>
+           <groupId>org.apache.velocity</groupId>
+           <artifactId>velocity</artifactId>
+           <version>1.7</version>
+       </dependency>
+
+
+       <dependency>
+           <groupId>org.apache.velocity</groupId>
+           <artifactId>velocity-tools</artifactId>
+           <version>2.0</version>
+       </dependency>
+
+       <dependency>
+           <groupId>commons-digester</groupId>
+           <artifactId>commons-digester</artifactId>
+           <version>1.8</version>
+       </dependency>
+
+    </dependencies>
+
+
+
+{% endhighlight %} 
+
 
  
 
-5：总结
-    按照上述步骤，可以完成目标。不过有一个问题，就是在配置log4j的监听器和文件位置的时候发现不能使用快捷键进行格式化。但是之前ContextLoadListener的时候却可以。
-    到目前为止，可以自定义配置文件的名称以及存放位置。定义了字符集，用来解决一般的乱码问题。可以使用junit和Spring-test进行单元测试。
 
-接下来，这是解决静态资源
 
         
-
-##restful环境
-
-##数据库配置
-
-##json配置
 
