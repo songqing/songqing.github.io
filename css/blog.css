@@ -3,10 +3,12 @@
  */
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif,'Microsoft YaHei', 宋体, 'Myriad Pro', Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #555;
   background-color: #e8e8e8;
 }
+
+
 
 
 h1, .h1,
