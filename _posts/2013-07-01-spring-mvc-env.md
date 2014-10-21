@@ -7,8 +7,18 @@ tag: Spring mvc
 ---
 
 ###说明
+从这篇开始，将Spring做一个总结。首先是Spring-MVC之前觉得这个很重要，后面发现其实很多流行的框架都实现了mvc模式，换一个框架可能Spring-mvc就用不到了，就像使用webx或者structs就不一定用到SpringMVC，反而Spring的其他地方一般的mvc框架都会支持，不过因为这个用得最久，也用得最熟，所以从mvc开始，再推到其他模块。
+
+其次，之前虽然用到了，但是没有好好总结，所以再次搭建的时候需要去其他地方或者网上找，还不如自己来搜集资料好好总结一下。
+
+之前写了5篇，现在综合成一篇，可能会有点长，对应的代码可能放在github上（SpringMvc项目上）
 
 之前是放在有道云笔记上的，不过经过我的反复折腾，不断的在有道和未知笔记上换来换去，删删改改，在今天搭建Velocity环境的适合发现竟然找不到了，所以，干脆写一篇放在博客上，同时在有道云笔记上方一个副本，因为没有用未知笔记了（Mac上有点不给力，当然有道也不给力，连清单待办事项都没有）
+
+###环境：
+- idea
+- tomcat
+- Maven  
 
 ###目的
 
@@ -22,29 +32,19 @@ tag: Spring mvc
 
 5. 配置事务
 
+6. 。。。。。。。
 
-按照上述步骤，可以完成目标。不过有一个问题，就是在配置log4j的监听器和文件位置的时候发现不能使用快捷键进行格式化。但是之前ContextLoadListener的时候却可以。
-    到目前为止，可以自定义配置文件的名称以及存放位置。定义了字符集，用来解决一般的乱码问题。可以使用junit和Spring-test进行单元测试。
 
-接下来，这是解决静态资源
+###一：最简单的环境
 
-之前写了5篇，现在综合成一篇，可能会有点长，对应的代码可能放在github上（mySpring或者SpringMvc项目上）
-
-###最简单的环境
-
-###前提：
-1. 全部使用spring默认设置
-
-###环境：
-- idea
-- tomcat
-- Maven  
 
 ###目标：
-- 运行的时候不报错即可
+1. 全部使用spring默认设置
+2. 运行的时候不报错即可
 
 
-```pom.xml```
+###步骤：
+1. 在```pom.xml```中添加以下依赖
 
 {% highlight xml %}
 
@@ -58,7 +58,7 @@ tag: Spring mvc
 {% endhighlight %}
 
 
-```web.xml```
+2. 在```web.xml```设置```DispatcherServlet```
 
 {% highlight xml %}
 
@@ -74,7 +74,7 @@ tag: Spring mvc
 
 {% endhighlight %}
 
-```dispatcher-servlet```
+3. 在```dispatcher-servlet```中不需要任何配置，只是要将该文件放到```WEB-INF```下
 
 {% highlight xml %}
 
@@ -83,13 +83,20 @@ tag: Spring mvc
 {% endhighlight %}
 
 
+###小结：
 这是最简单Spring mvc配置。其中的依赖Maven会自动依赖。查看包的时候，可以看到以下包已经被包含进去,只是这个只能说明配置成功，基本上只能保证运行的时候不报错
+
+使用到的各个组件分别是：
 
 
 ###目标：
 1. 可以运行Springmvc程序
 
-```pom.xml```：因为在控制器中需要用servlet
+###说明
+
+
+###步骤：
+1. 在```pom.xml```中加入以下依赖：因为在控制器中需要用servlet
 
 {% highlight xml %}
 
@@ -102,7 +109,7 @@ tag: Spring mvc
 {% endhighlight %}
 
 
-```dispatcher-servlet```
+2. ```dispatcher-servlet```中做如下配置使用的是Spring默认的```BeanNameUrlMapping```
 
 {% highlight xml %}
 
@@ -110,7 +117,8 @@ tag: Spring mvc
 
 {% endhighlight %}
 
-```TestController```
+
+3. 在```TestController```中实现```Controller```接口
 
 {% highlight java %}
 
@@ -129,7 +137,7 @@ public class TestController  implements Controller {
 
 {% endhighlight %}
 
-```user.jsp```在webapp下，不是在WEB-INF下
+4. ```user.jsp```在webapp下，不是在WEB-INF下
 
 {% highlight html %}
 
@@ -141,10 +149,17 @@ public class TestController  implements Controller {
 
 {% endhighlight %}
 
+###小结：
+这样配置好之后，可以运行Spring-mvc程序了，使用到的各个组件分别是：
 
-2. 使用slf4j和log4j替代common-logging
 
-```pom.xml```
+
+###目标：
+- 使用slf4j和log4j替代common-logging
+
+###步骤：
+
+1. 在```pom.xml```中增加以下依赖包
 
 {% highlight xml %}
 
@@ -177,13 +192,9 @@ public class TestController  implements Controller {
       {% endhighlight %}
                
 
-  - 并将common-logging排除。主要是在spring-context中。
-
-
-```pom.xml```
+2. 在```pom.xml```中将common-logging排除。主要是在spring-context中。
 
 {% highlight xml %}
-
 
        <dependency>
             <groupId>org.springframework</groupId>
@@ -203,7 +214,7 @@ public class TestController  implements Controller {
 {% endhighlight %}
         
 
-- 在```web.xml```中，加入```log4j```的```Listener```
+3. 在```web.xml```中，加入```log4j```的```Listener```
 
 
 {% highlight xml %}
@@ -216,19 +227,24 @@ public class TestController  implements Controller {
 
 {% endhighlight %}
 
+###小结
+使用以上配置之后，控制台比之前漂亮很多，而且如果开启debug，可以非常详细的看到Spring启动信息，方便调试
         
-- 2：自定义配置文件的存放位置
 
- Spring配置文件applicationContext.xml和dispatch-servlet.xml默认都是放在WEB-INF下面。而且文件名都有一定限制不能修改。如果想自定义文件名和文件位置，则需要做如下配置：
-       
+###目的        
 
-- 2.1：自定义applicatonContext.xml存放位置：
-        在web.xml中：
+- 自定义配置文件的存放位置
+
+###说明：
+Spring配置文件applicationContext.xml和dispatch-servlet.xml默认都是放在WEB-INF下面。而且文件名都有一定限制不能修改。如果想自定义文件名和文件位置，则需要做如下配置：
+   
+###步骤    
+
+- 1：自定义```applicatonContext.xml```的存放位置：在```web.xml```中：
 
 {% highlight xml %}
 
-
-            <context-param>
+    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:applicationContext*.xml
@@ -237,11 +253,10 @@ public class TestController  implements Controller {
 
 {% endhighlight %}
 
+这样配置之后，可以不需要放在指定位置，而且可以分开放
 
-- 2.2：自定义dispatchservlet.xml存放位置：
 
-        在web.xml中：
-
+- 2.自定义```dispatchservlet.xml```存放位置：在```web.xml```中
 
 {% highlight xml %}
 
@@ -258,8 +273,7 @@ public class TestController  implements Controller {
 {% endhighlight %}
 
 
-- 2.3：自定义log4j.properties存放位置：
-        在web.xml中：
+- 3：自定义log4j.properties存放位置：在```web.xml```中：
 
 {% highlight xml %}
 
@@ -271,6 +285,12 @@ public class TestController  implements Controller {
 
  {% endhighlight %}          
 
+
+###小结
+这样配置之后，可以随意存放```applicationContex.xml```, ```dispathcher-servelt.xml``` ```log4j.properties```的位置和名称，不过一般都是放在resources下。
+
+
+下面的还没有修改
 
 - 3：项目默认字符集设置-即在request请求中，默认使用utf-8接收字符串参数的值
         在web.xml中：
@@ -464,12 +484,6 @@ public class TestController  implements Controller {
 加入日志框架之后，则会发现，控制台显示的方式比之前好看多了。
 
 
-
- 
-
- 
-
- 
 
 注意Spring的版本和控制器。
 
