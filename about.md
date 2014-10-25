@@ -18,8 +18,8 @@ description: "songqing的个人简历"
 
  - 张松清/男/1990 
  - 硕士/北大
- - 微博：[@liuyiyou](http://weibo.com/zsq164)
- - Github: [liuyiyou](http://github.com/songqing)
+ - 微博：[@songqing](http://weibo.com/zsq164)
+ - Github: [songqing](http://github.com/songqing)
 
 ---
 
