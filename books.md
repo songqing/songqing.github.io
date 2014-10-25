@@ -3,7 +3,7 @@ layout: page-single
 title: "书单"
 description: "业余爱好的点滴记录，同时作为配置备份的存储地，好记性不如滥笔头。"
 ---
-
+##技术篇
 - 第一是php, 目前项目需要加强学习，经典的LAMP中的一环 参考书籍《PHP，mysql开发》（PHP的圣经）
 
 - 第二是linux内核学习，参考书籍《UNIX高级环境编程》，同样是圣经似的经典书籍
