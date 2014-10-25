@@ -1,11 +1,9 @@
-title: 温故而知新，触类而旁通
-name: liuyiyou
+title: 新的开始，充满挑战和乐趣
+name: songqing
 markdown: kramdown
 
-github: https://github.com/liuyiyou
-weibo: http://weibo.com/virgots
-twitter: https://twitter.com/liuyiyoucool
-facebook: https://www.facebook.com/liu.yiyou.35
+github: https://github.com/songqing
+weibo: http://weibo.com/zsq164
 
 #语法高亮
 pygments: true
@@ -25,7 +23,7 @@ permalink:  /posts/:title
 # comment
 comments:
     duoshuo:
-        name:  liuyiyou                             # short name
+        name:  songqing                             # short name
         rcomments:
             num: 10
             avatar: 0
